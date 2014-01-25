@@ -7,13 +7,19 @@ ul{
 }
 header{
 	background-color: #63A7FA;
-	padding: 0 20px 0 20px;
+	padding: 0 20px 0 5px;
+	min-width: 760px;
 }
 header div{
 	display: inline-block;
 }
 .logo{
 	width: 20%;
+	text-align: center;
+}
+.logo a img{
+	height: 30px;
+	vertical-align: middle;
 }
 .srbar{
 	width: 50%;
@@ -53,7 +59,7 @@ header div{
 }
 .srbar .search{
 	width: 80%;
-	height: 25px;
+	padding: 5px 6px 5px 6px;
 	border-radius: 5px;
 }
 .srbar .srcbutton{
@@ -61,7 +67,7 @@ header div{
 	background-color: #F3F3F1;
 	border: 1px solid #4D4F44;
 	border-radius: 2px;
-	padding: 3px 6px 4px 6px;
+	padding: 4px 6px 4px 6px;
 	height: 25px;
 }
 .srbar .srcbutton:hover{
