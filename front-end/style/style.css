@@ -41,6 +41,7 @@ header div{
 	background-color: #C8C9C0;
 	border: 1px solid #4D4F44;
 	padding: 2px 4px 2px 4px;
+	border-radius: 2px;
 }
 .signup:hover{
 	background-color: #393A32;

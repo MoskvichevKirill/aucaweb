@@ -1,0 +1,143 @@
+@font-face {
+  font-family: 'Actor';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Actor Regular'), local('Actor-Regular'), url("gZ8EM_Gzaq4WRjCimioyzQ.woff") format('woff');
+}
+body{
+	margin: 0;
+	font-family: 'Actor', sans-serif;
+	background: url("../assets/geometry.png");
+}
+ul{
+	list-style: none;
+}
+header{
+	background-color: #63A7FA;
+	padding: 0 20px 0 5px;
+	min-width: 760px;
+}
+header div{
+	display: inline-block;
+}
+.logo{
+	width: 20%;
+	text-align: center;
+}
+.logo a img{
+	height: 30px;
+	vertical-align: middle;
+}
+.srbar{
+	width: 50%;
+}
+.cpanel li{
+	display: inline-block;
+	padding: 0 7px 0 7px;
+}
+.cpanel {
+	width: 25%;
+	text-align: right;
+}
+.main{
+	width: 80%;
+	margin: 0 auto 0 auto;
+}
+.signup{
+	background-color: #C8C9C0;
+	border: 1px solid #4D4F44;
+	padding: 2px 4px 2px 4px;
+	border-radius: 2px;
+}
+.signup:hover{
+	background-color: #393A32;
+	color: white;
+	cursor: pointer;
+}
+.signup:active{
+	outline: 2px solid black;
+}
+.login{
+	color: white;
+	padding: 2px 4px 2px 4px;	
+}
+.login:hover{
+	cursor: pointer;
+	color: #0C1014;
+}
+.srbar .search{
+	width: 80%;
+	padding: 5px 6px 5px 6px;
+	border-radius: 5px;
+}
+.srbar .srcbutton{
+	margin-left: 10px;
+	background-color: #F3F3F1;
+	border: 1px solid #4D4F44;
+	border-radius: 2px;
+	padding: 4px 6px 4px 6px;
+	height: 25px;
+}
+.srbar .srcbutton:hover{
+	background-color: #CCCDC5;
+	color: white;
+	cursor: pointer;
+}
+.srbar .srcbutton:active{
+	box-shadow: inset 0 0 5px black;
+}
+
+.hidden{
+	display: none;
+}
+
+.popup{
+	top: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(39, 40, 34, .3);
+}
+.login-form{
+	width: 400px;
+	height: 250px;
+	margin: 150px auto auto auto;
+	vertical-align: middle;
+	background-color: #EFEFEF;
+	border: 2px solid #9FA392;
+	border-radius: 5px;
+}
+.login-form form{
+	width: 90%;
+	margin: 0 auto 0 auto;
+}
+.login-form .inp .field input{
+	width: 100%;
+	margin: 0 auto 0 auto;
+	padding: 4px 0px 4px 3px;
+	margin: 4px 0px 4px 3px;
+	border: 1px solid #45A2E7;
+	border-radius: 3px;
+	margin: 0 auto 0 auto;
+}
+.btn{
+	color: #fff;
+	margin-top: 20px;
+	width: 75px;
+	height: 35px;
+	border: 1px solid #595B4F;
+	border-radius: 5px;
+	background-image: linear-gradient(#2063DF, #01487C);
+	-webkit-background-size: auto 200%;
+	-moz-background-size: auto 200%;
+	background-size: auto 200%;
+	background-position: 0 100%;
+	-webkit-transition: background-position 0.5s;
+	-moz-transition: background-position 0.5s;
+	-o-transition: background-position 0.5s;
+	-ms-transition: background-position 0.5s;
+	transition: background-position 0.5s;	
+}
+.btn:hover{
+	background-position: 0 0;
+}
