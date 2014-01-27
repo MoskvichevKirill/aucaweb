@@ -7,7 +7,7 @@
 body{
 	margin: 0;
 	font-family: 'Actor', sans-serif;
-	background: url("../assets/geometry.png");
+	background-image: url("../assets/geometry.png");
 }
 ul{
 	list-style: none;
@@ -101,7 +101,7 @@ header div{
 .login-form{
 	width: 400px;
 	height: 250px;
-	margin: 150px auto auto auto;
+	margin: 15% auto auto auto;
 	vertical-align: middle;
 	background-color: #EFEFEF;
 	border: 2px solid #9FA392;
