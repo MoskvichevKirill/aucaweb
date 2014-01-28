@@ -1,3 +1,4 @@
+<?php require_once "../back-end/csrf.php";?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
 <body>
 	<header>
 		<div class="logo"><a href="/"><img src="assets/logo.png" alt="logo"></a></div>
-		<div class="srbar"><form action="search.php"><input class="search" type="text" name="searchbar" id="search"><input class="srcbutton" type="submit" value="Search"></form></div>
+		<div class="srbar"><form action="" method="POST"><input class="search" type="text" name="searchbar" id="search"><input class="srcbutton" type="submit" value="Search"></form></div>
 		<div class="cpanel"><ul>
 			<li><span class="signup">Sign up</span></li>
 			<li><span class="login">Log in</span></li>

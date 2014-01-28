@@ -1,5 +1,5 @@
 <?php
-	require_once "../back-end/csrf.php";
+	include "routes.php";
 	include "header.php";
 	include "content.php";
 	include "footer.php";
