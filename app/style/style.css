@@ -1,13 +1,17 @@
+h1{
+	margin: 0;
+}
 @font-face {
   font-family: 'Actor';
   font-style: normal;
   font-weight: 400;
   src: local('Actor Regular'), local('Actor-Regular'), url("gZ8EM_Gzaq4WRjCimioyzQ.woff") format('woff');
 }
-body{
+html,body{
 	margin: 0;
 	font-family: 'Actor', sans-serif;
 	background-image: url("../assets/geometry.png");
+	height: 100%;
 }
 ul{
 	list-style: none;
@@ -41,6 +45,7 @@ header div{
 }
 .main{
 	width: 80%;
+	height: 100%;
 	margin: 0 auto 0 auto;
 }
 .signup{
@@ -140,4 +145,13 @@ header div{
 }
 .btn:hover{
 	background-position: 0 0;
+}
+
+.container{
+	width: 840px;
+	height: 100%;
+	background: #fff;
+	margin: 0 auto 0 auto;
+	-webkit-box-shadow: 0 2px 5px #000;
+	box-shadow: 0 2px 5px #000;W
 }

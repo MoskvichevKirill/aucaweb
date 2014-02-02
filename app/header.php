@@ -1,4 +1,3 @@
-<?php require_once "../back-end/csrf.php";?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,6 +5,8 @@
 	<title>Question & Answer</title>
 	<link rel="icon" href="assets/favicon.ico">
 	<link rel="stylesheet" href="style/style.css">
+	<script src="lib/jquery-1.11.0.min.js"></script>
+	<script src="scripts/login.js"></script>
 </head>
 <body>
 	<header>

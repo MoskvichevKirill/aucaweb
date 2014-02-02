@@ -4,7 +4,7 @@
 			<h3>Login</h3>
 			<div class="inp"><div class="title">Email:</div><div class="field"><input id="email" type="email" required></div></div>
 			<div class="inp"><div class="title">Password:</div><div class="field"><input id="passw" type="password" required></div></div>
-			<input id="login" class="btn" type="submit" value="Login">
+			<input id="login" class="btn" type="button" value="Login">
 		</form>
 	</div>
 </div>

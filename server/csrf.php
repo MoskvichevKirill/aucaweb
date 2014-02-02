@@ -11,7 +11,9 @@
 		return $_SESSION['CSRF'];
 	}
 	function CSRFcheck($key){
-		if($_SESSION['CSRF'] === $key) return true;
+		if($_SESSION['CSRF'] === $key){
+			return true;
+		} 
 		return false;
 	}
 	
