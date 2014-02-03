@@ -1,4 +1,4 @@
-h1{
+h1, h2{
 	margin: 0;
 }
 @font-face {
@@ -154,4 +154,20 @@ header div{
 	margin: 0 auto 0 auto;
 	-webkit-box-shadow: 0 2px 5px #000;
 	box-shadow: 0 2px 5px #000;W
+}
+
+/*Registration form styles*/
+
+.signupform{
+	color: gray;
+}
+
+.signupform .field input{
+	width: 200px;
+	margin: 0 auto 0 auto;
+	padding: 4px 0px 4px 3px;
+	margin: 4px 0px 4px 3px;
+	border: 1px solid #45A2E7;
+	border-radius: 3px;
+	margin: 0 auto 0 auto;
 }
