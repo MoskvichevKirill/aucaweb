@@ -1,15 +1,15 @@
 <?php
 	require "view.php";
 
-	function login(){
+	function loginView(){
 		$view = new View();
 		echo $view->render("views/login.php");
 	}
-	function home(){
+	function homeView(){
 		$view = new View();
 		echo $view->render("views/home.php");
 	}
-	function register(){
+	function registerView(){
 		$view = new View();
 		echo $view->render("views/register.php");
 	}

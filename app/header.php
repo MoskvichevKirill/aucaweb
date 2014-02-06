@@ -13,7 +13,12 @@
 		<div class="logo"><a href="/"><img src="assets/logo.png" alt="logo"></a></div>
 		<div class="srbar"><form action="" method="POST"><input class="search" type="text" name="searchbar" id="search"><input class="srcbutton" type="submit" value="Search"></form></div>
 		<div class="cpanel"><ul>
+			<?php if(getUser() === NULL){?>
 			<li><span class="signup">Sign up</span></li>
 			<li><span class="login">Log in</span></li>
+			<?php } else { $name = getUser()['username']; ?>
+			<li><?php echo $name; ?></li>
+			<li><button><span class="logout">Log out</span></button></li>
+			<?php } ?>
 		</ul></div>
 	</header>

@@ -1,6 +1,7 @@
 $(function(){
 	var login = $(".login")
 		, popup = $(".popup")
+		, logout = $(".logout")
 		, popupactive = false;
 
 	var closePopup = function(){
@@ -14,16 +15,32 @@ $(function(){
 			, passw = $("#passw").val(); // Stores user password
 		console.log(email + " " + passw);
 		$.ajax({
-			url: "http://localhost/aucaweb/server/",
+			url: "http://localhost/aucaweb/server/login",
 			method: "POST",
 			data:{
-				"method" : "login",
+				"CSRF" : CSRF,
 				"email" : email,
 				"password" : passw
 			},
 			success: function(data){
 				console.log('login successful');
+				console.log(data);
 				console.log(JSON.parse(data));
+				location.reload();
+			}
+		});
+	}
+
+	var tryLogout = function(){
+		$.ajax({
+			url: "http://localhost/aucaweb/server/logout",
+			method: "POST",
+			data:{
+				"CSRF" : CSRF
+			},
+			success: function(data){
+				console.log('logout successful');
+				location.reload();
 			}
 		});
 	}
@@ -35,6 +52,13 @@ $(function(){
 			popupactive = true;
 		})
 	});
+
+	//Logout click
+	logout.on('click', function(){
+		console.log("logging out");
+		tryLogout();
+	});
+
 
 	//Close popup window on background click
 	popup.on('click', function(e){
