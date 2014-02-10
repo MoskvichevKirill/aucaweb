@@ -68,12 +68,12 @@ $(function(){
 	});
 
 	//Keydown handlers for popup window
-	// $(document).keydown(function(e){
-	// 	if(popupactive){
-	// 		if(e.keyCode === 27) { closePopup(); } // Pressing Esc key closes popup
-	// 		if(e.keyCode === 13) { tryLogin(); }
-	// 	}
-	// });
+	$(document).keydown(function(e){
+		if(popupactive){
+			if(e.keyCode === 27) { closePopup(); } // Pressing Esc key closes popup
+			if(e.keyCode === 13) { tryLogin(); }
+		}
+	});
 
 	//Login click event
 	var submit = $("#login");
