@@ -15,18 +15,19 @@
 	if($match) {
 		if($match['target']['a'] === "login"){
 			if(CSRFcheck()){
-				login();
+				UserController::login();
 			}
 		} elseif($match['target']['a'] === "register"){
 			if(CSRFcheck()){
-				register();
+				// Need to add data varification for anc check for similarities
+				UserController::register();
 			}
 		} elseif ($match['target']['a'] === "logout") {
 			if(CSRFcheck()){
-				logout();
+				UserController::logout();
 			}
 		}
-	} 
+	}
 	else {
 	  header("HTTP/1.0 404 Not Found");
 	}

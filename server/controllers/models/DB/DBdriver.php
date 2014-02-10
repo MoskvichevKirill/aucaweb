@@ -25,9 +25,9 @@
 			return self::$_instance;
 		}
 
-		public function queryDB($query){	
+		public function queryDB($query, $type){
 			$result = $this->_mysqli->query($query);
-			if($result){
+			if($result && ($type == "select" || $type == "update")){
 				$response = array();
 				while($row = $result->fetch_assoc()){
 					array_push($response, $row);
@@ -35,8 +35,11 @@
 				$result->close();
 				return $response;
 			}
+			else if($result && $type == "insert"){
+				return true;
+			}
 			else{
-				return NULL;
+				return false;
 			}
 		}
 	}

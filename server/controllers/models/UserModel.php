@@ -12,7 +12,7 @@
 	function UserLogin($email, $password){
 		global $db;
 		$query = "SELECT username, email FROM user WHERE email='$email' and password='$password'";
-		$result = $db->queryDB($query);
+		$result = $db->queryDB($query, "select");
 		if($result) {
 			return array('type' => true, 'data' => $result[0]);
 		} else {
@@ -27,8 +27,8 @@
 		$password = $user['password'];
 		$validate = 0;
 		$auth_key = sha1(strip_tags(stripslashes($password.$username)));
-		$query = "INSERT into user VALUES ('$email', '$username', '$password', '$validate', '$auth_key')";
-		$result = $db->queryDB($query);
+		$query = "INSERT INTO user(email, username, password, validate, auth_key) VALUES ('$email', '$username', '$password', '$validate', '$auth_key')";
+		$result = $db->queryDB($query, "insert");
 		if($result) {
 			return array('type' => true, 'data' => $auth_key);
 		} else {

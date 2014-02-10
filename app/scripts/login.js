@@ -2,6 +2,7 @@ $(function(){
 	var login = $(".login")
 		, popup = $(".popup")
 		, logout = $(".logout")
+		, register = $('#register')
 		, popupactive = false;
 
 	var closePopup = function(){
@@ -10,7 +11,6 @@ $(function(){
 			});
 	}
 	var tryLogin = function(){
-		
 		var email = $('#email').val()  // Stores user email
 			, passw = $("#passw").val(); // Stores user password
 		console.log(email + " " + passw);
@@ -43,6 +43,29 @@ $(function(){
 				location.reload();
 			}
 		});
+	}
+
+	var tryRegister = function(){
+		var email = $('input[name="email"]').val()
+			, username = $('input[name="username"]').val()
+			, password = $('input[name="password"]').val();
+		console.log(email + " " + username + " " + password);
+
+		$.ajax({
+			url: "http://localhost/aucaweb/server/register",
+			method: "POST",
+			data: {
+				"CSRF" : CSRF,
+				"email": email,
+				"username": username,
+				"password": password
+			},
+			success: function(data){
+				console.log("Success request");
+				console.log(data);
+			}
+		});
+
 	}
 
 	// Showing popup window on click
@@ -81,4 +104,8 @@ $(function(){
 		// event.preventDefault();
 		tryLogin();
 	});
+
+	register.click('submit', function(event){
+		tryRegister();
+	})
 });
