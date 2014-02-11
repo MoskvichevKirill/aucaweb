@@ -1,8 +1,7 @@
 <?php
 
-
 	class DB{
-		
+
 		protected static $_mysqli;
 
 		protected static $_query;
@@ -12,7 +11,7 @@
 		function __construct($host, $username, $password, $db, $port=NULL){
 			if($port === NULL){
 				$port = ini_get('mysqli.default_port');
-			} 
+			}
 			$this->_mysqli = new mysqli($host, $username, $password, $db, $port)
 				or die("unable to establish mysqli connection");
 
@@ -20,7 +19,7 @@
 
 			self::$_instance = $this;
 		}
-		
+
 		public function getInstance(){
 			return self::$_instance;
 		}

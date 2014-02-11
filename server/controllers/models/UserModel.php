@@ -1,17 +1,12 @@
 <?php
-	include "DB/config.php";
-	require "DB/DBdriver.php";
-
-	$db = new DB($host, $username, $password, $dbname);
-
-
+	include "dbinit.php";
 	/*
 	 * Standart template for response array(type => value, data => value )
 	 */
 
 	function UserLogin($email, $password){
 		global $db;
-		$query = "SELECT username, email FROM user WHERE email='$email' and password='$password'";
+		$query = "SELECT id, username, email FROM user WHERE email='$email' and password='$password'";
 		$result = $db->queryDB($query, "select");
 		if($result) {
 			return array('type' => true, 'data' => $result[0]);
