@@ -160,6 +160,7 @@ header div{
 
 .signupform{
 	color: gray;
+	margin: 0 100px 0 100px;
 }
 
 .signupform .field input{
