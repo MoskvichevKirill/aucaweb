@@ -10,10 +10,12 @@
 		}
 		return $_SESSION['CSRF'];
 	}
-	function CSRFcheck($key){
-		if($_SESSION['CSRF'] === $key){
-			return true;
-		} 
+	function CSRFcheck(){
+		if(isset($_POST['CSRF'])){
+			if($_SESSION['CSRF'] == $_POST['CSRF']){
+				return true;
+			} 
+		}
 		return false;
 	}
 	

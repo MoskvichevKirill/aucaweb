@@ -56,11 +56,17 @@ header div{
 }
 .signup:hover{
 	background-color: #393A32;
-	color: white;
 	cursor: pointer;
+}
+.signup:hover a{
+	color: white;
 }
 .signup:active{
 	outline: 2px solid black;
+}
+.signup a{
+	text-decoration: none;
+	color: black;
 }
 .login{
 	color: white;
@@ -98,7 +104,7 @@ header div{
 
 .popup{
 	top: 0;
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	height: 100%;
 	background-color: rgba(39, 40, 34, .3);
