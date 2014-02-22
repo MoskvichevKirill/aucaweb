@@ -23,10 +23,17 @@ $(function(){
 				"password" : passw
 			},
 			success: function(data){
-				console.log('login successful');
-				console.log(data);
-				console.log(JSON.parse(data));
-				location.reload();
+				var result = JSON.parse(data);
+				var popupmessage = result.message;
+				$('.widget-flash-message > span:first').remove();
+				if(result.success){
+					$('.widget-flash-message').append("<span class='success'>" + popupmessage + "</span>");
+					location.reload();
+				} else {
+					$('.widget-flash-message').append("<span class='err'>" + popupmessage + "</span>");
+					email = $('#email').val("");
+					passw = $("#passw").val("");
+				}
 			}
 		});
 	}
@@ -77,7 +84,7 @@ $(function(){
 	// Showing popup window on click
 	login.on('click', function(){
 		popup.fadeIn("slow", function(){
-			popup.removeClass("hidden");	
+			popup.removeClass("hidden");
 			popupactive = true;
 		})
 	});
@@ -122,7 +129,7 @@ $(function(){
         var cpswrd = document.sgnup.cpassword.value;
 		var username = document.sgnup.username.value;
 		var invalid = /[\W_]/; //only letters and numbers
-		
+
 		if (username.match(invalid))
 		{
 			alert("the username must contain only numbers and letters!");
@@ -139,5 +146,40 @@ $(function(){
 			return false;
 		}
 
+	}
+
+	// Post form handlers
+	var create_post = $('#addpost');
+	create_post.on('submit ', function(event){
+		event.preventDefault();
+		var question = $('input[name="question"]').val()
+		, description = $('input[name="description"]').val()
+		, tags = $('input[name="tags"]').val();
+		id_post = null;
+		createPost(question, description, tags, id_post)
+	});
+
+	function createPost(question, description, tags, id_post){
+		$.ajax({
+			url: "http://localhost/aucaweb/server/post",
+			method: "POST",
+			data: {
+				"CSRF" : CSRF,
+				"title": question,
+				"content": description,
+				"tags": tags,
+				"id_post" : id_post
+			},
+			success: function(data){
+				var result = jQuery.parseJSON(data);
+				var popupmessage = result.message;
+				$('.post-flash-message > span:first').remove();
+				if(result.success){
+					$('.post-flash-message').append("<span class='success'>" + popupmessage + "</span>");
+				} else {
+					$('.post-flash-message').append("<span class='err'>" + popupmessage + "</span>");
+				}
+			}
+		});
 	}
 });

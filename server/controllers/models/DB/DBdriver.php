@@ -34,7 +34,7 @@
 				$result->close();
 				return $response;
 			}
-			else if($result && $type == "insert"){
+			else if($result && ($type == "insert" || $type == "delete")){
 				return true;
 			}
 			else{
