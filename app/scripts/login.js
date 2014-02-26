@@ -11,8 +11,10 @@ $(function(){
 			});
 	}
 	var tryLogin = function(){
-		var email = $('#email').val()  // Stores user email
-			, passw = $("#passw").val(); // Stores user password
+		//var email = $('#email').val()  // Stores user email
+		//	, passw = $("#passw").val(); // Stores user password
+		var email = $('input[name="email"]').val(),
+				passw = $('input[name="password"]').val();
 		console.log(email + " " + passw);
 		$.ajax({
 			url: "http://localhost/aucaweb/server/login",
@@ -30,6 +32,9 @@ $(function(){
 					$('.widget-flash-message').append("<span class='success'>" + popupmessage + "</span>");
 					location.reload();
 				} else {
+					if (window.location != "http://localhost/aucaweb/app/login"){
+						window.location = "http://localhost/aucaweb/app/login";
+					}
 					$('.widget-flash-message').append("<span class='err'>" + popupmessage + "</span>");
 					email = $('#email').val("");
 					passw = $("#passw").val("");
@@ -47,7 +52,8 @@ $(function(){
 			},
 			success: function(data){
 				console.log('logout successful');
-				location.reload();
+				// location.header();
+				window.location = "http://localhost/aucaweb/app/";
 			}
 		});
 	}

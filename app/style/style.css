@@ -184,7 +184,6 @@ header div{
 	margin: 0 auto 0 auto;
 }
 
-<<<<<<< HEAD
 /*Login form Aidai*/
 
 .loginfe{
@@ -196,20 +195,13 @@ header div{
 	background: white;
 	border-radius: 2px;
 	margin: 20px auto 0 auto;
+	width: 50%;
 }
-p input{
+.loginfe p input{
 	border: 1px solid #45A2E7;
 	padding: 4px 7px 4px 3px;
-
 }
 
-
-
-
-
-
-
-=======
 
 /*
  * Flash message styles
@@ -286,4 +278,3 @@ p input{
 .post-flash-message{
 	text-align: right;
 }
->>>>>>> d08750c3093bb61221d1ef5157a9cdae34573c7b
