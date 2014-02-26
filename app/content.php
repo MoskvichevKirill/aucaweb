@@ -1,8 +1,7 @@
 <div class="main">
 	<div class="container">
-		<!-- <?php ?> -->
 		<?php
-			set_view($current_view);
+			$controller::$action();
 		?>
 	</div>
 </div>

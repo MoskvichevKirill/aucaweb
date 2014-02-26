@@ -1,5 +1,4 @@
 <?php
-	include "dbinit.php";
 	/*
 	 * Standart template for response array(type => value, data => value )
 	 */

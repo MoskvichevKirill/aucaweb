@@ -1,25 +1,38 @@
 <?php
-	require "DB/DBdriver.php";
 
 	function createPost($post){
 		global $db;
 		$title = $post['title'];
 		$content = $post['content'];
-		$id_user = $_SESSION['user']['id'];
+		$id_user = $post['id_user'];
 		$datetime = time();
 		$rating = 0;
 		$tags = $post['tags'];
-		$status = false;
-		if($post['id_post'] !== NULL){
+		$id_post = $post['id_post'];
+		$status = 0;
+		if($id_post != null){
 			$id_post = $post['id_post'];
+			$query = "INSERT INTO post (title, content, id_user, datetime, rating, tags, status, id_post)
+								VALUES ('$title', '$content', '$id_user', '$datetime', '$rating', '$tags', $status, $id_post)";
+
 		} else {
-			$id_post = NULL;
+			$query = "INSERT INTO post (title, content, id_user, datetime, rating, tags, status)
+								VALUES ('$title', '$content', '$id_user', '$datetime', '$rating', '$tags', $status)";
 		}
-		$query = "INSERT INTO post (title, content, id_user, datetime, rating, tags, status, id_post) 
-							VALUES ('$title', '$content', '$id_user', '$datetime', '$rating', '$tags', '$id_post')";
-		$result = $db->queryDB($query);
+		$result = $db->queryDB($query, "insert");
 		if($result) {
-			return array('type' => true, 'data' => $result[0]);
+			return array('type' => true, 'data' => NULL);
+		} else {
+			return array('type' => false, 'data' => NULL);
+		}
+	}
+	function deletePost($postID){
+		global $db;
+		$id_user = $_SESSION['user']['id'];
+		$query = "DELETE FROM post WHERE id_user = '$id_user' and id = '$id'";
+		$result = $db->queryDB($query, "delete");
+		if($result){
+			return array('type' => true, 'data' => NULL);
 		} else {
 			return array('type' => false, 'data' => NULL);
 		}

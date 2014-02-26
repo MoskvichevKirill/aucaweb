@@ -13,11 +13,11 @@
 
 				if($result['type'] !== false){
 					$_SESSION['user'] = $result['data'];
-					$response = array("success" => true, "message" => "Login successful!" ,"data" => $result['data']);
+					$response = array("success" => true, "message" => "Всё ок!" ,"data" => $result['data']);
 					echo json_encode($response);
 				}
 				else{
-					$response = array("success" => false, "message" => "Login failed!" ,"data" => NULL);
+					$response = array("success" => false, "message" => "Не удалось войти!" ,"data" => NULL);
 					echo json_encode($response);
 				}
 			}
@@ -47,9 +47,9 @@
 				);
 				$result = AddUser($user);
 				if($result['type']){
-					$response = array("success" => true, "message" => "Registration successful!" ,"data" => $result['data']);
+					$response = array("success" => true, "message" => "Регистрация успешна!" ,"data" => $result['data']);
 				} else {
-					$response = array("success" => false, "message" => "Registration failed due to server issues!" ,"data" => NULL);
+					$response = array("success" => false, "message" => "Не удалось зарегистрироваться!" ,"data" => NULL);
 				}
 				echo json_encode($response);
 			}
