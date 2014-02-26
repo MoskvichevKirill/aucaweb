@@ -178,3 +178,28 @@ header div{
 	border-radius: 3px;
 	margin: 0 auto 0 auto;
 }
+
+/*Login form Aidai*/
+
+.loginfe{
+	color: gray;
+	margin:100px auto 0 auto;
+	padding: 20px 20px 20px;
+	width: 40%;
+	border: 1px solid #45A2E7;
+	background: white;
+	border-radius: 2px;
+	margin: 20px auto 0 auto;
+}
+p input{
+	border: 1px solid #45A2E7;
+	padding: 4px 7px 4px 3px;
+
+}
+
+
+
+
+
+
+
