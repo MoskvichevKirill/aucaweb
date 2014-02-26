@@ -1,6 +1,9 @@
 h1, h2{
 	margin: 0;
 }
+ul{
+	margin: 5px 0 5px 0;
+}
 @font-face {
   font-family: 'Actor';
   font-style: normal;
@@ -20,6 +23,7 @@ header{
 	background-color: #63A7FA;
 	padding: 0 20px 0 5px;
 	min-width: 760px;
+	height: 40px;
 }
 header div{
 	display: inline-block;
@@ -29,18 +33,18 @@ header div{
 	text-align: center;
 }
 .logo a img{
-	height: 30px;
+	height: 31px;
 	vertical-align: middle;
+	padding: 5px 0 5px 0;
 }
 .srbar{
 	width: 50%;
 }
 .cpanel li{
-	display: inline-block;
+	display: inline-table;
 	padding: 0 7px 0 7px;
 }
 .cpanel {
-	width: 25%;
 	text-align: right;
 }
 .main{
@@ -275,6 +279,95 @@ header div{
 .postform .field{
 	margin-bottom: 10px;
 }
+.postform textarea{
+	width: 580px;
+	height: 140px;
+	resize: none;
+}
 .post-flash-message{
 	text-align: right;
+}
+
+
+/*
+ * Styles for profile option button
+ */
+.optbtn{
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+	cursor: pointer;
+}
+.optbtn:hover .line{
+	-webkit-transition: all 0.45s ease-out;
+	-moz-transition: all 0.45s ease-out;
+	-o-transition: all 0.45s ease-out;
+	-ms-transition: all 0.45s ease-out;
+	transition: all 0.45s ease-out;
+	border: 1px solid red;
+}
+.line{
+	height: 15px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+
+.optbtn:active .line{
+	-webkit-transition: all 0.45s ease-out;
+	-moz-transition: all 0.45s ease-out;
+	-o-transition: all 0.45s ease-out;
+	-ms-transition: all 0.45s ease-out;
+	transition: all 0.45s ease-out;
+	border: 1px solid black;
+}
+.active .line{
+	border: 1px solid #000;
+}
+.visible{
+	display: block !important;
+}
+.usermenu{
+	display: none;
+	position: absolute;
+	width: 180px;
+	text-align: left;
+	margin-top: 4px;
+	margin-left: -80px;
+}
+.usermenu ul{
+	border-radius: 10px;
+	padding: 10px 0 10px 0;
+	background: #ccc;
+	margin-top: 0;
+	/*margin-left: -110px;*/
+}
+
+.usermenu ul li{
+	padding: 5px;
+	/*border-top: 1px solid white;*/
+	border-bottom: 1px solid white;
+	width: 170px;
+	color: white;
+	cursor: pointer;
+	/*padding-left 10px;*/
+}
+.usermenu ul li:hover{
+	background: white;
+	color: black;
+}
+.usermenu ul li:active{
+	/*box-shadow: inset 0 0 5px #ccc;*/
+	background-color: #626455;
+	color: white;
+}
+.triangle-pointer{
+	margin-left: 80px;
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #ccc;
+	margin-bottom: -5px;
 }

@@ -3,6 +3,8 @@ $(function(){
 		, popup = $(".popup")
 		, logout = $(".logout")
 		, register = $('#register')
+		, useropt = $('.optbtn')
+		, usermenu = $('.usermenu')
 		, popupactive = false;
 
 	var closePopup = function(){
@@ -109,6 +111,17 @@ $(function(){
 		}
 	});
 
+	//On user menu click
+	useropt.on('click', function(e){
+		if(useropt.hasClass("active")){
+			useropt.removeClass("active");
+			usermenu.removeClass("visible");
+		} else {
+			useropt.addClass("active");
+			usermenu.addClass("visible");
+		}
+	});
+
 	//Keydown handlers for popup window
 	$(document).keydown(function(e){
 		if(popupactive){
@@ -159,7 +172,7 @@ $(function(){
 	create_post.on('submit ', function(event){
 		event.preventDefault();
 		var question = $('input[name="question"]').val()
-		, description = $('input[name="description"]').val()
+		, description = $('textarea[name="description"]').val()
 		, tags = $('input[name="tags"]').val();
 		id_post = null;
 		createPost(question, description, tags, id_post)
@@ -182,6 +195,7 @@ $(function(){
 				$('.post-flash-message > span:first').remove();
 				if(result.success){
 					$('.post-flash-message').append("<span class='success'>" + popupmessage + "</span>");
+					window.location = "http://localhost/aucaweb/app";
 				} else {
 					$('.post-flash-message').append("<span class='err'>" + popupmessage + "</span>");
 				}
