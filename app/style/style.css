@@ -371,3 +371,14 @@ header div{
 	border-bottom: 10px solid #ccc;
 	margin-bottom: -5px;
 }
+
+/* Change password and e-mail*/
+
+.mybutton{
+	color: #fff;
+	background-color: #0099cc;
+	font-size: 100%;
+	font-weight: bold;
+	text-transform: uppercase;
+
+}
