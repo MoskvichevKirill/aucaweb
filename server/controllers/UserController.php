@@ -45,28 +45,33 @@
 					"username" => strip_tags(stripslashes(mysql_real_escape_string($username))),
 					"password" => sha1(strip_tags(stripslashes(mysql_real_escape_string($password))))
 				);
-				$result = AddUser($user);
-				if($result['type']){
-					$response = array("success" => true, "message" => "Регистрация успешна!" ,"data" => $result['data']);
-				} else {
-					$response = array("success" => false, "message" => "Не удалось зарегистрироваться!" ,"data" => NULL);
-				}
+				// if(checkCredentials($email, $username)){
+					$result = AddUser($user);
+					if($result['type']){
+						$response = array("success" => true, "message" => "Регистрация успешна!" ,"data" => $result['data']);
+					} else {
+						$response = array("success" => false, "message" => "Не удалось зарегистрироваться!" ,"data" => NULL);
+					}
+				// } else {
+				// 	$response = array("success" => false, "message" => "Пользователь с таким именем или почтой существует." ,"data" => NULL);
+				// }
 				echo json_encode($response);
 			}
 		}
 
 		function checkCredentials($email, $username){
-			$credentials = array(
-				"email" => strip_tags(stripslashes(mysql_real_escape_string($email))),
-				"username" => strip_tags(stripslashes(mysql_real_escape_string($username))),
-			);
-			$result = CheckCredentials($credentials);
+			$email = strip_tags(stripslashes(mysql_real_escape_string($email)));
+			$username = strip_tags(stripslashes(mysql_real_escape_string($username)));
+			$result = CheckCredentials($email, $username);
 			if($result['type']) {
-				return array("success" => true, "message" => "Credentials are valid!" ,"data" => NULL);
+				return false;
 			} else {
-				$message = "This ".$result['data']." is already in use";
-				return array("success" => true, "message" => $message ,"data" => NULL);
+				return true;
 			}
+		}
+
+		function updateUserInfo($new_credentials){
+
 		}
 	}
 ?>

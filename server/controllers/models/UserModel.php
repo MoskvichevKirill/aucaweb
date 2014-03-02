@@ -29,4 +29,14 @@
 			return array('type' => false, 'data' => NULL);
 		}
 	}
+	function CheckCredentials($email, $username){
+		global $db;
+		$query = "SELECT * FROM user WHERE email='$email' OR username='$username'";
+		$result = $db->queryDB($query, "select");
+		if(count($result) == 0) {
+			return array('type' => false, 'data' => null);
+		} else {
+			return array('type' => true, 'data' => null);
+		}
+	}
 ?>

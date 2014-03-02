@@ -76,13 +76,14 @@ $(function(){
 				"password": password
 			},
 			success: function(data){
-				// console.log(data);
+				console.log(data);
 				var result = jQuery.parseJSON(data);
-				console.log(result);
 				alert(result.message);
-				setInterval(function(){
-					window.location = "http://localhost/aucaweb/app";
-				}, 1200);
+				if(result.success){
+					setInterval(function(){
+						window.location = "http://localhost/aucaweb/app";
+					}, 1200);
+				}
 
 			}
 		});
@@ -137,7 +138,7 @@ $(function(){
 		tryLogin();
 	});
 
-	register.click('submit', function(event){
+	register.on('submit', function(event){
 		event.preventDefault();
 		tryRegister();
 	});
