@@ -1,7 +1,10 @@
 <?php
 	require "view.php";
 	class ContentController{
-
+		function layout($action){
+			$layout_view = new View();
+			echo $layout_view->render("views/layout.php", array("action" => $action));
+		}
 		function loginView(){
 			$view = new View();
 			echo $view->render("views/login.php");
@@ -9,7 +12,8 @@
 
 		function homeView(){
 			$view = new View();
-			echo $view->render("views/home.php");
+			$posts = PostController::getPosts();
+			echo $view->render("views/home.php", array('posts'=>$posts));
 		}
 
 		function registerView(){

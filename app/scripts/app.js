@@ -20,7 +20,7 @@ $(function(){
 				passw = $('input[name="password"]').val();
 		console.log(email + " " + passw);
 		$.ajax({
-			url: "http://localhost/aucaweb/server/login",
+			url: "/aucaweb/app/login",
 			method: "POST",
 			data:{
 				"CSRF" : CSRF,
@@ -28,6 +28,7 @@ $(function(){
 				"password" : passw
 			},
 			success: function(data){
+				console.log(data);
 				var result = JSON.parse(data);
 				var popupmessage = result.message;
 				$('.widget-flash-message > span:first').remove();
@@ -48,7 +49,7 @@ $(function(){
 
 	var tryLogout = function(){
 		$.ajax({
-			url: "http://localhost/aucaweb/server/logout",
+			url: "/aucaweb/app/logout",
 			method: "POST",
 			data:{
 				"CSRF" : CSRF
@@ -56,7 +57,7 @@ $(function(){
 			success: function(data){
 				console.log('logout successful');
 				// location.header();
-				window.location = "http://localhost/aucaweb/app/";
+				window.location = "/aucaweb/app/";
 			}
 		});
 	}
@@ -71,7 +72,7 @@ $(function(){
 			alert("Введенные пароли не идентичны");
 		} else {
 			$.ajax({
-				url: "http://localhost/aucaweb/server/register",
+				url: "/aucaweb/app/register",
 				method: "POST",
 				data: {
 					"CSRF" : CSRF,
@@ -85,7 +86,7 @@ $(function(){
 					alert(result.message);
 					if(result.success){
 						setInterval(function(){
-							window.location = "http://localhost/aucaweb/app";
+							window.location = "/aucaweb/app";
 						}, 1200);
 					}
 				}
@@ -184,7 +185,7 @@ $(function(){
 
 	function createPost(question, description, tags, id_post){
 		$.ajax({
-			url: "http://localhost/aucaweb/server/post",
+			url: "/aucaweb/app/post",
 			method: "POST",
 			data: {
 				"CSRF" : CSRF,
@@ -199,7 +200,7 @@ $(function(){
 				$('.post-flash-message > span:first').remove();
 				if(result.success){
 					$('.post-flash-message').append("<span class='success'>" + popupmessage + "</span>");
-					window.location = "http://localhost/aucaweb/app";
+					window.location = "/aucaweb/app";
 				} else {
 					$('.post-flash-message').append("<span class='err'>" + popupmessage + "</span>");
 				}

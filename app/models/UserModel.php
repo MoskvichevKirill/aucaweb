@@ -2,7 +2,6 @@
 	/*
 	 * Standart template for response array(type => value, data => value )
 	 */
-
 	function UserLogin($email, $password){
 		global $db;
 		$query = "SELECT id, username, email FROM user WHERE email='$email' and password='$password'";

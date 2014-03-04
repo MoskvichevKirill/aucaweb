@@ -54,7 +54,7 @@
 			} else {
 				$response = array("success" => true, "message" => "Something is wrong" ,"data" => NULL);
 			}
-			return $response;
+			return $result;
 		}
 	}
 
