@@ -18,7 +18,7 @@
 		<div class="field">
 			<input name="cpassword" type="password" required/>
 		</div>
-	 	<p style="margin-left:130px;"><input class="btn" type="submit" value="Submit"/></p>
+	 	<p><input class="btn" type="submit" value="Отправить"/></p>
 	 </form>
 
 </div>

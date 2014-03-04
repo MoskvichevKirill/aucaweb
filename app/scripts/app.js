@@ -5,6 +5,7 @@ $(function(){
 		, register = $('#register')
 		, useropt = $('.optbtn')
 		, usermenu = $('.usermenu')
+		, options = $('.options')
 		, popupactive = false;
 
 	var closePopup = function(){
@@ -32,10 +33,10 @@ $(function(){
 				$('.widget-flash-message > span:first').remove();
 				if(result.success){
 					$('.widget-flash-message').append("<span class='success'>" + popupmessage + "</span>");
-					location.reload();
+					window.location = "/aucaweb/app/";
 				} else {
-					if (window.location != "http://localhost/aucaweb/app/login"){
-						window.location = "http://localhost/aucaweb/app/login";
+					if (window.location != "/aucaweb/app/login"){
+						window.location = "/aucaweb/app/login";
 					}
 					$('.widget-flash-message').append("<span class='err'>" + popupmessage + "</span>");
 					email = $('#email').val("");
@@ -63,31 +64,33 @@ $(function(){
 	var tryRegister = function(){
 		var email = $('input[name="email"]').val()
 			, username = $('input[name="username"]').val()
-			, password = $('input[name="password"]').val();
-		console.log(email + " " + username + " " + password);
-
-		$.ajax({
-			url: "http://localhost/aucaweb/server/register",
-			method: "POST",
-			data: {
-				"CSRF" : CSRF,
-				"email": email,
-				"username": username,
-				"password": password
-			},
-			success: function(data){
-				console.log(data);
-				var result = jQuery.parseJSON(data);
-				alert(result.message);
-				if(result.success){
-					setInterval(function(){
-						window.location = "http://localhost/aucaweb/app";
-					}, 1200);
+			, password = $('input[name="password"]').val()
+			, cpassword = $('input[name="cpassword"]').val();
+		console.log(password + " "+ cpassword);
+		if(password != cpassword){
+			alert("Введенные пароли не идентичны");
+		} else {
+			$.ajax({
+				url: "http://localhost/aucaweb/server/register",
+				method: "POST",
+				data: {
+					"CSRF" : CSRF,
+					"email": email,
+					"username": username,
+					"password": password
+				},
+				success: function(data){
+					console.log(data);
+					var result = jQuery.parseJSON(data);
+					alert(result.message);
+					if(result.success){
+						setInterval(function(){
+							window.location = "http://localhost/aucaweb/app";
+						}, 1200);
+					}
 				}
-
-			}
-		});
-
+			});
+		}
 	}
 
 	// Showing popup window on click
@@ -203,4 +206,12 @@ $(function(){
 			}
 		});
 	}
+
+	options.on('click', function(){
+		console.log('GO');
+		window.location = "/aucaweb/app/options";
+	});
+
+
+	//End of file
 });

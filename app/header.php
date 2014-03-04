@@ -19,7 +19,8 @@
 			<?php } else { $name = UserController::getUser()['username']; ?>
 			<li><button class="postbtn"><a href="http://localhost/aucaweb/app/create"><span><span class="plus"><img src="assets/plus.png" alt="plus"></span>Задать вопрос</span></a></button></li>
 			<li><?php echo $name; ?></li>
-			<li><div class="optbtn" title="Меню">
+			<li>
+				<div class="optbtn" title="Меню">
 					<div class="line"></div>
 					<div class="line"></div>
 					<div class="line"></div>
@@ -27,7 +28,7 @@
 				<div class="usermenu">
 					<div class="triangle-pointer"></div>
 					<ul>
-						<li>Настройки профиля</li>
+						<li class="options">Настройки профиля</li>
 						<li class="logout">Выйти</li>
 					</ul>
 				</div>

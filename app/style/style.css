@@ -22,7 +22,7 @@ ul{
 header{
 	background-color: #63A7FA;
 	padding: 0 20px 0 5px;
-	min-width: 760px;
+	width: 100%;
 	height: 40px;
 }
 header div{
@@ -166,8 +166,8 @@ header div{
 	height: 100%;
 	background: #fff;
 	margin: 0 auto 0 auto;
-	-webkit-box-shadow: 0 2px 5px #000;
-	box-shadow: 0 2px 5px #000;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
 	padding-top: 40px;
 }
 
@@ -453,3 +453,33 @@ header div{
 	text-align: justify;
 	line-height: 1;
 }
+.e404{
+	padding-top: 20%;
+	width: 80%;
+	margin: auto;
+}
+.e404 div{
+	font-size: 7.5em;
+	display: inline-block;
+}
+.e404_Q, .e404_A{
+	color: red;
+	font-weight: bold;
+}
+.e404_A{
+	transform: rotate(170deg);
+	-webkit-transform: rotate(170deg);
+	margin-top: 110px;
+	vertical-align: top;
+}
+.e404_content{
+	text-align: right;
+	font-size: 1.4em !important;
+	padding-left: 20px;
+}
+.e404_content:before{
+	content: '404..';
+	display: block;
+	font-size: 4.5em;
+}
+

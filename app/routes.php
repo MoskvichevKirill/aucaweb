@@ -11,7 +11,8 @@
 	$router->map('GET','/register', array('c' => 'ContentController', 'a' => 'registerView'));
 	$router->map('GET','/search/', array('c' => 'ContentController', 'a' => 'searchView'));
 	$router->map('GET','/create', array('c' => 'ContentController', 'a' => 'createPostView'));
-	$router->map('GET', '/logout', array('a' => 'logout'));
+	$router->map('GET','/options', array('c'=>'ContentController', 'a'=>'profileOptions'));
+	// $router->map('GET','/logout', array('c'=>'UserController', 'a' => 'logout')); //need to fix
 	$match = $router->match();
 	if($match){
 		$controller = $match['target']['c'];

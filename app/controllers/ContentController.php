@@ -27,5 +27,10 @@
 			echo $view->render("views/e404.php");	
 		}
 
+		function profileOptions(){
+			$view = new View();
+			echo $view->render("views/options.php");
+		}
+
 	}
 ?>
