@@ -45,9 +45,17 @@
 		}
 
 		function ratePost(){
-			
 		}
 
+		function getPosts($page = 1){
+			$result = GetPosts($page);
+			if($result['type']){
+				$response = array("success" => true, "message" => "Got 30 posts!" ,"data" => $result['data']);
+			} else {
+				$response = array("success" => true, "message" => "Something is wrong" ,"data" => NULL);
+			}
+			return $response;
+		}
 	}
 
 ?>

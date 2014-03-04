@@ -37,6 +37,17 @@
 			return array('type' => false, 'data' => NULL);
 		}
 	}
+	function GetPosts($page){
+		global $db;
+		$limit = 30 * $page;
+		$query = "SELECT * FROM post WHERE id_post IS NULL LIMIT '$limit'";
+		$result = $db->queryDB($query, "select");
+		if($result){
+			return array('type' => true, 'data' => $result);
+		} else {
+			return array('type' => false, 'data' => NULL);
+		}
+	}
 
 
 ?>
