@@ -28,7 +28,7 @@
 				<div class="usermenu">
 					<div class="triangle-pointer"></div>
 					<ul>
-						<li class="options">Настройки профиля</li>
+						<li>Настройки профиля</li>
 						<li class="logout">Выйти</li>
 					</ul>
 				</div>
