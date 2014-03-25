@@ -19,14 +19,32 @@
 								VALUES ('$title', '$content', '$id_user', NOW(), '$rating', $status)";
 		}
 		$result = $db->queryDB($query, "insert");
-		if($result) {
-			return array('type' => true, 'data' => NULL);
+		if($result && $id_post == null) {
+			$insert_id = $db->getLastID();
+			$res = insertTags($insert_id, $tags);
+			if($res){
+				return array('type' => true, 'data' => NULL);
+			}
+			else{
+				return array('type' => false, 'data' => NULL);
+			}
 		} else {
 			return array('type' => false, 'data' => NULL);
 		}
 	}
 	function insertTags($post_id, $tags){
 		global $db;
+		$res = false;
+		for ($i=0; $i < count($tags); $i++) {
+			$tag = $tags[$i];
+			$query = "INSERT INTO tags (post_id, tag) 
+								VALUES ('$post_id', '$tag')";
+			$result = $db->queryDB($query, "insert");
+			if(!$result){
+				return false;
+			}
+		}
+		return true;
 	}
 	function deletePost($postID){
 		global $db;

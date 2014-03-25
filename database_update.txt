@@ -1,0 +1,62 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.4.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 25, 2014 at 06:41 PM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.19
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `aucaweb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post`
+--
+
+CREATE TABLE IF NOT EXISTS `post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` char(255) NOT NULL DEFAULT '',
+  `content` mediumtext,
+  `id_user` int(11) NOT NULL,
+  `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `rating` int(11) DEFAULT '0',
+  `status` char(16) NOT NULL DEFAULT '0',
+  `id_post` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_user` (`id_user`),
+  KEY `id_post` (`id_post`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`id`, `title`, `content`, `id_user`, `datetime`, `rating`, `status`, `id_post`) VALUES
+(4, 'Why do we study?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, rerum culpa sapiente et ipsam eius magnam laborum facilis animi quam cupiditate accusantium iste doloremque placeat aut modi distinctio omnis quisquam.', 12, '0000-00-00 00:00:00', 0, '0', NULL),
+(5, 'QnA does it help anyone?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, rerum culpa sapiente et ipsam eius magnam laborum facilis animi quam cupiditate accusantium iste doloremque placeat aut modi distinctio omnis quisquam.', 12, '0000-00-00 00:00:00', 0, '0', NULL),
+(6, 'ÐŸÐ¾Ñ‡ÐµÐ¼Ñƒ Ð¿Ð¾ÑÑ‚Ñ‹ Ð´Ð¾ Ð¼ÐµÐ½Ñ Ð²ÑÐµ Ð½Ð° Ð°Ð½Ð³Ð»Ð¸Ð¹ÑÐºÐ¾Ð¼? 0_Ð¾', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, rerum culpa sapiente et ipsam eius magnam laborum facilis animi quam cupiditate accusantium iste doloremque placeat aut modi distinctio omnis quisquam.', 12, '0000-00-00 00:00:00', 0, '0', NULL),
+(7, 'Question with timestamp', 'Getting current timestamp is so easy :P', 12, '0000-00-00 00:00:00', 0, '0', NULL),
+(8, 'Test two', 'gogogo', 12, '2014-03-05 04:19:02', 0, '0', NULL),
+(9, 'This is my simple question about tags, does it work?', 'testing tags', 12, '2014-03-25 17:35:37', 0, '0', NULL),
+(10, 'This is my simple question about tags, does it work?', 'testing tags', 12, '2014-03-25 17:36:15', 0, '0', NULL),
+(11, 'This is simple test', 'tagas', 12, '2014-03-25 17:37:23', 0, '0', NULL),
+(12, 'This is simple test', 'tagas', 12, '2014-03-25 17:38:24', 0, '0', NULL),
+(13, 'Ð¡Ñ‚Ð°Ð²Ð»ÑŽ ÑÑŽÐ´Ð° Ñ‚ÑÐ³Ð¸!', 'Ð¢ÑÐ³Ð¸ Ñ‚ÑÐ³Ð¸ Ñ‚ÑÐ³Ð¸', 12, '2014-03-25 17:39:38', 0, '0', NULL);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `post_ibfk_2` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`);

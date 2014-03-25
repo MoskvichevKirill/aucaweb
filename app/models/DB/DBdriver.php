@@ -41,6 +41,9 @@
 				return false;
 			}
 		}
+		public function getLastID(){
+			return $this->_mysqli->insert_id;
+		}
 	}
 
 
