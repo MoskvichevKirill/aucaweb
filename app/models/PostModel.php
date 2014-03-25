@@ -1,22 +1,22 @@
+
 <?php
 	function createPost($post){
 		global $db;
 		$title = $post['title'];
 		$content = $post['content'];
 		$id_user = $post['id_user'];
-		$datetime = time();
 		$rating = 0;
 		$tags = $post['tags'];
 		$id_post = $post['id_post'];
 		$status = 0;
 		if($id_post != null){
 			$id_post = $post['id_post'];
-			$query = "INSERT INTO post (title, content, id_user, datetime, rating, tags, status, id_post)
-								VALUES ('$title', '$content', '$id_user', '$datetime', '$rating', '$tags', $status, $id_post)";
+			$query = "INSERT INTO post (title, content, id_user, datetime, rating, status, id_post)
+								VALUES ('$title', '$content', '$id_user', NOW(), '$rating', $status, $id_post)";
 
 		} else {
-			$query = "INSERT INTO post (title, content, id_user, datetime, rating, tags, status)
-								VALUES ('$title', '$content', '$id_user', '$datetime', '$rating', '$tags', $status)";
+			$query = "INSERT INTO post (title, content, id_user, datetime, rating, status)
+								VALUES ('$title', '$content', '$id_user', NOW(), '$rating', $status)";
 		}
 		$result = $db->queryDB($query, "insert");
 		if($result) {
@@ -24,6 +24,9 @@
 		} else {
 			return array('type' => false, 'data' => NULL);
 		}
+	}
+	function insertTags($post_id, $tags){
+		global $db;
 	}
 	function deletePost($postID){
 		global $db;

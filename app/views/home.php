@@ -1,5 +1,5 @@
 <div class="questions">
-	<?php 
+	<?php
 	if($posts['type']){
 		$questions = $posts['data'];
 		for($i = 0; $i < count($questions); ++$i) {
@@ -20,7 +20,7 @@
 				<div class="question_desc"><?= $question_desc;?></div>
 		</div>
 	</div>
-	<?php 
+	<?php
 		}
 	}
 	?>

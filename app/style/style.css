@@ -393,6 +393,7 @@ header div{
 	margin: 0 0 20px 0;
 	padding: 0 0 10px 0;
 	border-bottom: 1px solid #ccc;
+	
 }
 .question .score{
 	width: 10%;
@@ -451,7 +452,10 @@ header div{
 	padding: 0 10px 0 20px;
 	overflow: hidden;
 	text-align: justify;
-	line-height: 1;
+	white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 0.9em;
+  height: 1.8em;
 }
 .e404{
 	padding-top: 20%;

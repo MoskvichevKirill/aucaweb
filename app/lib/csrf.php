@@ -1,5 +1,4 @@
 <?php
-	
 	session_start();
 
 	function CSRFgen(){
@@ -14,9 +13,8 @@
 		if(isset($_POST['CSRF'])){
 			if($_SESSION['CSRF'] == $_POST['CSRF']){
 				return true;
-			} 
+			}
 		}
 		return false;
 	}
-	
 ?>

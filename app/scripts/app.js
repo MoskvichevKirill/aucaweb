@@ -14,8 +14,6 @@ $(function(){
 			});
 	}
 	var tryLogin = function(){
-		//var email = $('#email').val()  // Stores user email
-		//	, passw = $("#passw").val(); // Stores user password
 		var email = $('input[name="email"]').val(),
 				passw = $('input[name="password"]').val();
 		console.log(email + " " + passw);
@@ -209,7 +207,6 @@ $(function(){
 	}
 
 	options.on('click', function(){
-		console.log('GO');
 		window.location = "/aucaweb/app/options";
 	});
 

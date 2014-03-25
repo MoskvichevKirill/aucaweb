@@ -8,7 +8,7 @@
 				$post['id_user'] = $_SESSION['user']['id'];
 				$post['title'] = $_POST['title'];
 				$post['content'] = $_POST['content'];
-				$post['tags'] = $_POST['tags'];
+				$post['tags'] = explode(',', $_POST['tags']); // Need to sql escape and parse to array
 				$post['datetime'] = time();
 				$post['rating'] = 0;
 				if($_POST['id_post'] !== null){
