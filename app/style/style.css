@@ -375,12 +375,39 @@ header div{
 /* Change password and e-mail*/
 
 .mybutton{
-	color: #fff;
+	/*color: #fff;
 	background-color: #0099cc;
 	font-size: 100%;
 	font-weight: bold;
-	text-transform: uppercase;
+	text-transform: uppercase;*/
+	color: #fff;
+	margin-top: 20px;
+	width: 200px;
+	height: 35px;
+	font-size: 15px;
+	border: 1px solid #595B4F;
+	border-radius: 5px;
+	background-image: linear-gradient(#2063DF, #01487C);
+	-webkit-background-size: auto 200%;
+	-moz-background-size: auto 200%;
+	background-size: auto 200%;
+	background-position: 0 100%;
+	-webkit-transition: background-position 0.5s;
+	-moz-transition: background-position 0.5s;
+	-o-transition: background-position 0.5s;
+	-ms-transition: background-position 0.5s;
+	transition: background-position 0.5s;
 
+}
+.mybutton:hover{
+	background-position: 0 0;
+}
+.options{
+	color: gray;
+	margin: 0 100px 0 100px;
+	display: block;
+	font-size: 17px;
+	font-family: 'Actor', sans-serif;
 }
 
 /*homepage*/
