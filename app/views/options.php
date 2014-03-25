@@ -1,13 +1,12 @@
 <div class="options">
 <meta charset="utf-8">
-	<h2>Личные настройки</h2>
+	<h2 id="pset">Личные настройки</h2>
 	<hr>
 	<form>
-		<input class="mybutton" value="Поменять пароль" name="change_password()">
+		<button class="mybutton" type="submit" value="ch_password">Поменять пароль</button>
 	</form>
-
 	<form>
-		<input class="mybutton" value="Поменять e-mail" name="change_mail()">
+		<button class="mybutton" type="submit" value="ch_email">Поменять e-mail</button>
 	</form>
 
 </div>
