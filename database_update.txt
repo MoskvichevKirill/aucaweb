@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2014 at 06:41 PM
+-- Generation Time: Apr 02, 2014 at 05:59 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -13,6 +13,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `aucaweb`
 --
+CREATE DATABASE IF NOT EXISTS `aucaweb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `aucaweb`;
 
 -- --------------------------------------------------------
 
@@ -32,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`),
   KEY `id_post` (`id_post`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `post`
@@ -48,7 +50,75 @@ INSERT INTO `post` (`id`, `title`, `content`, `id_user`, `datetime`, `rating`, `
 (10, 'This is my simple question about tags, does it work?', 'testing tags', 12, '2014-03-25 17:36:15', 0, '0', NULL),
 (11, 'This is simple test', 'tagas', 12, '2014-03-25 17:37:23', 0, '0', NULL),
 (12, 'This is simple test', 'tagas', 12, '2014-03-25 17:38:24', 0, '0', NULL),
-(13, 'Ð¡Ñ‚Ð°Ð²Ð»ÑŽ ÑÑŽÐ´Ð° Ñ‚ÑÐ³Ð¸!', 'Ð¢ÑÐ³Ð¸ Ñ‚ÑÐ³Ð¸ Ñ‚ÑÐ³Ð¸', 12, '2014-03-25 17:39:38', 0, '0', NULL);
+(13, 'Ð¡Ñ‚Ð°Ð²Ð»ÑŽ ÑÑŽÐ´Ð° Ñ‚ÑÐ³Ð¸!', 'Ð¢ÑÐ³Ð¸ Ñ‚ÑÐ³Ð¸ Ñ‚ÑÐ³Ð¸', 12, '2014-03-25 17:39:38', 0, '0', NULL),
+(14, '', 'Because we need it!', 13, '2014-04-01 15:43:26', 0, '0', 4),
+(16, '', 'Good answer :P', 12, '2014-04-01 15:50:14', 0, '0', 14),
+(17, '', 'This is a nested comment', 12, '2014-04-01 16:08:24', 0, '0', 16),
+(18, '', 'Studying is a light!', 13, '2014-04-01 16:09:18', 0, '0', 4),
+(19, '', 'Also nested', 12, '2014-04-01 16:23:09', 0, '0', 14);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rate`
+--
+
+CREATE TABLE IF NOT EXISTS `rate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_post` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `inc` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `id_post` (`id_post`),
+  KEY `id_user` (`id_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+CREATE TABLE IF NOT EXISTS `tags` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `tag` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `post_id`, `tag`) VALUES
+(1, 13, 'Ñ‚ÑÐ³'),
+(2, 13, ' Ð¿Ñ€Ð¾ÑÑ‚Ð¾'),
+(3, 13, ' Ñ‚Ð°ÐºÐ¾Ð¹'),
+(4, 13, ' Ð²Ð¾Ñ‚');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` char(50) NOT NULL DEFAULT 'NULL',
+  `password` char(128) NOT NULL DEFAULT 'NULL',
+  `username` char(64) NOT NULL DEFAULT 'NULL',
+  `validate` int(11) NOT NULL DEFAULT '0',
+  `auth_key` char(128) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `password`, `username`, `validate`, `auth_key`) VALUES
+(12, 'rem4ik4ever@mail.ru', '056eafe7cf52220de2df36845b8ed170c67e23e3', 'Rem', 0, '9e599f42d5ca329ea7752f5baae07bb71ea97a41'),
+(13, 'rem4ik4ever@yandex.ru', '056eafe7cf52220de2df36845b8ed170c67e23e3', 'arhanhel', 0, 'a8fb838730fc4ad9b6b41c0f3d3871b24dc61b10');
 
 --
 -- Constraints for dumped tables
@@ -60,3 +130,10 @@ INSERT INTO `post` (`id`, `title`, `content`, `id_user`, `datetime`, `rating`, `
 ALTER TABLE `post`
   ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `post_ibfk_2` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`);
+
+--
+-- Constraints for table `rate`
+--
+ALTER TABLE `rate`
+  ADD CONSTRAINT `rate_ibfk_1` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`),
+  ADD CONSTRAINT `rate_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
