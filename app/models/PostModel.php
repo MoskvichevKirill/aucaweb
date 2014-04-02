@@ -68,6 +68,31 @@
 			return array('type' => false, 'data' => $result);
 		}
 	}
+	function GetComments($id){
+		global $db;
+		$query = "SELECT * FROM post WHERE id_post = '$id'";
+		$result = $db->queryDB($query, "select");
+		if($result){
+			for ($i=0; $i < count($result); $i++) {
+					$res = GetComments($result[$i]['id']);
+					$result[$i]['comments'] = $res;
+			}
+			return $result;
+		} else {
+			return array('type' => false, 'data' => $result);
+		}
+	}
+
+	function GetPost($id){
+		global $db;
+		$query = "SELECT * FROM post WHERE id = '$id'";
+		$result = $db->queryDB($query, "select");
+		if($result){
+			return array('type' => true, 'data' => $result);
+		} else {
+			return array('type' => false, 'data' => $result);
+		}
+	}
 
 
 ?>

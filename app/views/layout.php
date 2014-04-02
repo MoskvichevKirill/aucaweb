@@ -2,7 +2,11 @@
 <div class="main">
 	<div class="container">
 		<?php
-			ContentController::$action();
+			if(count($params) != 0){
+				ContentController::$action($params['id']);
+			} else {
+				ContentController::$action();
+			}
 		?>
 	</div>
 </div>

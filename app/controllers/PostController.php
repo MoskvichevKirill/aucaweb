@@ -47,20 +47,31 @@
 		function ratePost(){
 		}
 
-		function getPosts($page = 1){
+		function getPosts($page = 4){
 			$result = GetPosts($page);
+			// $result = GetComments($page);
 			if($result['type']){
 				$response = array("success" => true, "message" => "Got 30 posts!" ,"data" => $result['data']);
+				return $result;
 			} else {
 				$response = array("success" => true, "message" => "Something is wrong" ,"data" => NULL);
 			}
-			return $result;
 		}
-		function getComments($post_id){
-			$query = "SELECT @pv:=id AS id, content, id_post FROM post
-								join
-								(SELECT @pv:=$post_id)tmp
-								WHERE id_post=@pv";
+		function getPost($id){
+			$post = GetPost($id);
+			if($post['type']){
+				$result = GetComments($id);
+				if($result){
+					$post['comments'] = $result;
+					// echo json_encode($post);
+					// $response = array("success" => true, "message" => "Got 30 posts!" ,"data" => $result['data']);
+					return $post;
+				} else {
+					// $response = array("success" => true, "message" => "Something is wrong" ,"data" => NULL);
+				}
+			} else {
+
+			}
 		}
 	}
 

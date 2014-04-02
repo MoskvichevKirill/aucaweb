@@ -1,9 +1,9 @@
 <?php
 	require "view.php";
 	class ContentController{
-		function layout($action){
+		function layout($action, $params = array()){
 			$layout_view = new View();
-			echo $layout_view->render("views/layout.php", array("action" => $action));
+			echo $layout_view->render("views/layout.php", array("action" => $action, 'params' => $params));
 		}
 		function loginView(){
 			$view = new View();
@@ -36,5 +36,10 @@
 			echo $view->render("views/options.php");
 		}
 
+		function postView($id){
+			$view = new View();
+			$post = PostController::getPost($id);
+			echo $view->render("views/post.php", array('post'=>$post));
+		}
 	}
 ?>

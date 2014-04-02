@@ -14,6 +14,7 @@
 	$router->map('GET','/search/', array('c' => 'ContentController', 'a' => 'searchView'));
 	$router->map('GET','/create', array('c' => 'ContentController', 'a' => 'createPostView'));
 	$router->map('GET','/options', array('c'=>'ContentController', 'a'=>'profileOptions'));
+	$router->map('GET', '/[i:id]', array('c' => 'ContentController', 'a' => 'postView'));
 	// $router->map('GET','/logout', array('c'=>'UserController', 'a' => 'logout')); //need to fix
 	$router->map('POST','/login', array('c' => 'UserController', 'a' => 'login'));
 	$router->map('POST','/register', array('c' => 'UserController', 'a' => 'register'));
@@ -24,7 +25,11 @@
 		$controller = $match['target']['c'];
 		$action = $match['target']['a'];
 		if($controller === "ContentController"){
-			$controller::layout($action);
+			if($match['params']){
+				$controller::layout($action, $match['params']);
+			} else {
+				$controller::layout($action);
+			}
 		} else if($controller === "UserController"){
 			if(CSRFcheck()){
 				$controller::$action();
