@@ -56,6 +56,12 @@
 			}
 			return $result;
 		}
+		function getComments($post_id){
+			$query = "SELECT @pv:=id AS id, content, id_post FROM post
+								join
+								(SELECT @pv:=$post_id)tmp
+								WHERE id_post=@pv";
+		}
 	}
 
 ?>
