@@ -3,6 +3,7 @@
 	if($posts['type']){
 		$questions = $posts['data'];
 		for($i = 0; $i < count($questions); ++$i) {
+			$question_id = $questions[$i]['id'];
 			$question_title = $questions[$i]['title'];
 			$question_desc = $questions[$i]['content'];
 			$question_rating = $questions[$i]['rating'];
@@ -16,7 +17,7 @@
 			</ul>
 		</div>
 			<div class="question_content">
-				<div class="question_title"><a href="#question"><?= $question_title;?></a></div>
+				<div class="question_title"><a href="/aucaweb/app/<?=$question_id?>"><?= $question_title;?></a></div>
 				<div class="question_desc"><?= $question_desc;?></div>
 		</div>
 	</div>
