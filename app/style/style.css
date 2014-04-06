@@ -551,6 +551,9 @@ header div{
 	/*display: inline-block;*/
 	padding: 10px 10px 10px 0;
 }
+.comment-reply{
+	
+}
 .comment-info{
 	display: flex;
 	flex-direction: row;

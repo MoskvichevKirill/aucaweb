@@ -35,7 +35,7 @@ function showComments($comments){
 		<div class="score">
 			<ul>
 			 	<li class="up"><div class="arrow">></div></li>
-			 	<li class="score_number"><div><?= $question['rating'];?></div></li>
+			 	<li class="score_number"><div><?=$question['rating'];?></div></li>
 			 	<li class="down"><div class="arrow"><</div></li>
 			</ul>
 		</div>
