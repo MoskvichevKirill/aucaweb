@@ -8,11 +8,11 @@
 			$question_desc = $questions[$i]['content'];
 			$question_rating = $questions[$i]['rating'];
 		?>
-	<div class="question">
+	<div class="question" data-id="<?=$question_id;?>">
 		<div class="score">
 			<ul>
 			 	<li class="up"><div class="arrow">></div></li>
-			 	<li class="score_number"><div><?= $question_rating;?></div></li>
+			 	<li class="score_number"><div class="rate_num"><?= $question_rating;?></div></li>
 			 	<li class="down"><div class="arrow"><</div></li>
 			</ul>
 		</div>

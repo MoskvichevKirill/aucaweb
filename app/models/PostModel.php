@@ -28,6 +28,13 @@
 			else{
 				return array('type' => false, 'data' => NULL);
 			}
+		} else if($result && $id_post != null){
+			if($result){
+				return array('type' => true, 'data' => NULL);
+			}
+			else{
+				return array('type' => false, 'data' => NULL);
+			}
 		} else {
 			return array('type' => false, 'data' => NULL);
 		}
@@ -70,7 +77,12 @@
 	}
 	function GetComments($id){
 		global $db;
-		$query = "SELECT * FROM post WHERE id_post = '$id'";
+		$query = "SELECT `post`.`id`, `title`, `content`, `user`.`username`, `datetime`, `rating`
+							FROM post 
+							JOIN user
+							ON `user`.`id` = `post`.`id_user`
+							WHERE id_post = '$id'
+							ORDER BY datetime DESC";
 		$result = $db->queryDB($query, "select");
 		if($result){
 			for ($i=0; $i < count($result); $i++) {
@@ -79,7 +91,7 @@
 			}
 			return $result;
 		} else {
-			return array('type' => false, 'data' => $result);
+			return $result;
 		}
 	}
 

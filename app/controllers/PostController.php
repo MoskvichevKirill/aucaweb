@@ -3,7 +3,7 @@
 	class PostController{
 
 		function addPost(){
-			if($_SESSION['user'] !== NULL){
+			if(!empty($_SESSION['user'])){
 				$post = array();
 				$post['id_user'] = $_SESSION['user']['id'];
 				$post['title'] = $_POST['title'];
@@ -21,7 +21,7 @@
 					$response = array("success" => false, "message" => "Не удалось создать пост" ,"data" => NULL);
 				}
 			}	else {
-				$response = array("success" => fail, "message" => "Не авторизированный пользователь" ,"data" => NULL);
+				$response = array("success" => false, "message" => "Не авторизированный пользователь" ,"data" => NULL);
 			}
 			echo json_encode($response);
 		}
@@ -45,6 +45,7 @@
 		}
 
 		function ratePost(){
+
 		}
 
 		function getPosts($page = 4){
@@ -63,11 +64,9 @@
 				$result = GetComments($id);
 				if($result){
 					$post['comments'] = $result;
-					// echo json_encode($post);
-					// $response = array("success" => true, "message" => "Got 30 posts!" ,"data" => $result['data']);
 					return $post;
 				} else {
-					// $response = array("success" => true, "message" => "Something is wrong" ,"data" => NULL);
+
 				}
 			} else {
 

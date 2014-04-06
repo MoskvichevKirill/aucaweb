@@ -152,6 +152,7 @@ header div{
 	-moz-background-size: auto 200%;
 	background-size: auto 200%;
 	background-position: 0 100%;
+	cursor: pointer;
 	-webkit-transition: background-position 0.5s;
 	-moz-transition: background-position 0.5s;
 	-o-transition: background-position 0.5s;
@@ -424,18 +425,19 @@ header div{
 	border-bottom: 1px solid #ccc;
 	
 }
-.question .score{
+.score{
 	width: 10%;
+	padding-right: 20px;
 }
 .question .question_content{
 	width: 80%;
 }
-.question .score ul{
+.score ul{
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
-.question .score ul li{
+.score ul li{
 	display: block;
 	text-align: center;
 }
@@ -469,7 +471,7 @@ header div{
 .question_title{
 	font-size: 1.2em;
 	font-weight: 300;
-	padding: 10px 10px 10px 20px;
+	padding: 10px 10px 10px 0;
 }
 .question_title a{
 	text-decoration: none;
@@ -478,10 +480,19 @@ header div{
 .question_desc{
 	font-size: 0.9em;
 	font-weight: 200;
-	padding: 0 10px 0 20px;
+	padding: 0 10px 0 0;
 	overflow: hidden;
 	text-align: justify;
 	white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 0.9em;
+  height: 1.8em;
+}
+.question_desc_full{
+	font-size: 0.9em;
+	font-weight: 200;
+	padding: 0 10px 0 0;
+	text-align: justify;
   text-overflow: ellipsis;
   line-height: 0.9em;
   height: 1.8em;
@@ -515,4 +526,61 @@ header div{
 	display: block;
 	font-size: 4.5em;
 }
+.rate_num{
+	padding-left: 3px;
+}
 
+.single_post{
+	padding-bottom: 10%;
+}
+/*
+ *Comment view styles
+ */
+
+.comments{
+	margin: 0 0 0 30px;
+}
+.comment{
+	padding: 5px 0 5px 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	border-bottom: 1px solid #ccc;
+}
+.comment-content{
+	/*display: inline-block;*/
+	padding: 10px 10px 10px 0;
+}
+.comment-info{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 12px;
+}
+.date{
+	margin-left: 20px;
+}
+.comment-rating{
+	margin: 0 10px 0 10px;
+}
+.like, .dislike{
+	margin: 0 5px 0 5px;
+}
+.comment-author{
+	margin-left: 20px;
+	color: blue;
+}
+.comment-form{
+	padding: 0 10% 0 10%;
+}
+.inp-comment{
+	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	display: block;
+	width: 30%;
+	height: 100px;
+}
+.inp-comment:focus{
+	width: 80%;
+	height: 200px;
+}

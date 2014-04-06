@@ -6,6 +6,7 @@ $(function(){
 		, useropt = $('.optbtn')
 		, usermenu = $('.usermenu')
 		, options = $('.options')
+		, comment_form = $('.comment-form')
 		, popupactive = false;
 
 	var closePopup = function(){
@@ -32,7 +33,7 @@ $(function(){
 				$('.widget-flash-message > span:first').remove();
 				if(result.success){
 					$('.widget-flash-message').append("<span class='success'>" + popupmessage + "</span>");
-					window.location = "/aucaweb/app/";
+					location.reload();
 				} else {
 					if (window.location != "/aucaweb/app/login"){
 						window.location = "/aucaweb/app/login";
@@ -197,8 +198,12 @@ $(function(){
 				var popupmessage = result.message;
 				$('.post-flash-message > span:first').remove();
 				if(result.success){
-					$('.post-flash-message').append("<span class='success'>" + popupmessage + "</span>");
-					window.location = "/aucaweb/app";
+					if(id_post == null){
+						$('.post-flash-message').append("<span class='success'>" + popupmessage + "</span>");
+						window.location = "/aucaweb/app";
+					} else{
+						location.reload();
+					}
 				} else {
 					$('.post-flash-message').append("<span class='err'>" + popupmessage + "</span>");
 				}
@@ -209,7 +214,13 @@ $(function(){
 	options.on('click', function(){
 		window.location = "/aucaweb/app/options";
 	});
-
+	console.log(comment_form);
+	comment_form.on('submit', function(event){
+		event.preventDefault();
+		var comment = $('.inp-comment').val();
+		var id_post = $('input[name="id_post"]').val();
+		createPost("", comment, "", id_post)
+	});
 
 	//End of file
 });
