@@ -163,6 +163,7 @@ header div{
 	background-position: 0 0;
 }
 
+
 .container{
 	width: 840px;
 	height: 92%;
@@ -551,6 +552,13 @@ header div{
 	/*display: inline-block;*/
 	padding: 10px 10px 10px 0;
 }
+.comment-reply{
+	padding-right: 5px;
+	padding-top: 5px;
+	margin-left: 0;
+	font-size: small;
+	color: blue;
+}
 .comment-info{
 	display: flex;
 	flex-direction: row;
@@ -562,13 +570,16 @@ header div{
 }
 .comment-rating{
 	margin: 0 10px 0 10px;
+
 }
 .like, .dislike{
 	margin: 0 5px 0 5px;
 }
 .comment-author{
 	margin-left: 20px;
-	color: blue;
+	color: #3385FF;
+	font-family: Verdana;
+	font-weight: 700;
 }
 .comment-form{
 	padding: 0 10% 0 10%;
@@ -583,4 +594,38 @@ header div{
 .inp-comment:focus{
 	width: 80%;
 	height: 200px;
+}
+.inp-reply{
+	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	display: block;
+	width: 30%;
+	height: 20px;
+}
+.inp-reply:focus{
+	width: 80%;
+	height: 100px;
+}
+
+.btn-reply{
+	color: #fff;
+	margin-top: 3px;
+	width: 75px;
+	height: 20px;
+	border: 1px solid #595B4F;
+	border-radius: 5px;
+	background-image: linear-gradient(#2063DF, #01487C);
+	-webkit-background-size: auto 200%;
+	-moz-background-size: auto 200%;
+	background-size: auto 200%;
+	background-position: 0 100%;
+	cursor: pointer;
+	-webkit-transition: background-position 0.5s;
+	-moz-transition: background-position 0.5s;
+	-o-transition: background-position 0.5s;
+	-ms-transition: background-position 0.5s;
+	transition: background-position 0.5s;	
+}
+.btn-reply:hover{
+	background-position: 0 0;
 }
