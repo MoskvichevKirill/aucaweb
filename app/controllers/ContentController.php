@@ -41,5 +41,14 @@
 			$post = PostController::getPost($id);
 			echo $view->render("views/post.php", array('post'=>$post));
 		}
+
+		function changePassword(){
+			$view = new View();
+			echo $view->render("views/change_password.php");
+		}
+		function changeEmail(){
+			$view = new View();
+			echo $view->render("views/change_email.php");
+		}
 	}
 ?>
