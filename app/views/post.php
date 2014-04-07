@@ -22,6 +22,13 @@ function showComments($comments){
 					}
 					?>
 				</div>
+				<div>
+					<form action="" class="comment-form" data-id="<?=$comments[$i]['id'];?>">
+						<textarea name="comment" id="" cols="30" rows="10" class="inp-comment" required></textarea>
+						<input type="text" name="id_post" value="<?=$comments[$i]['id'];?>" hidden>
+						<input type="submit" class="btn" value="Отправить">
+					</form>
+				</div>
 			</div>
 			<div class="comments">
 				<?php if(!empty($comments[$i])){showComments($comments[$i]['comments']);} ?>

@@ -217,9 +217,9 @@ $(function(){
 	console.log(comment_form);
 	comment_form.on('submit', function(event){
 		event.preventDefault();
-		var comment = $('.inp-comment').val();
-		var id_post = $('input[name="id_post"]').val();
-		createPost("", comment, "", id_post)
+		var comment = $(this).find('.inp-comment').val();
+		var id_post = $(this).find('input[name="id_post"]').val();
+		createPost("", comment, "", id_post);
 	});
 
 	//End of file
