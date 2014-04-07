@@ -22,20 +22,13 @@ function showComments($comments){
 					}
 					?>
 				</div>
-				<?php
-				if(UserController::getUser() !== null){
-				?>
-				<div class="comment-reply">
-					<form action="" class="comment-form">
-						<textarea name="comment" id="" cols="30" rows="10" class="inp-reply" required></textarea>
+				<div>
+					<form action="" class="comment-form" data-id="$comments[$i]['id'];?>">
+						<textarea name="comment" id="" cols="30" rows="10" class="inp-comment" required></textarea>
 						<input type="text" name="id_post" value="<?=$comments[$i]['id'];?>" hidden>
-						<input type="submit" class="btn-reply" value="Ответить">
+						<input type="submit" class="btn" value="Отправить">
 					</form>
 				</div>
-				<?php
-				}
-				?>
-
 			</div>
 			<div class="comments">
 				<?php if(!empty($comments[$i])){showComments($comments[$i]['comments']);} ?>
@@ -49,7 +42,7 @@ function showComments($comments){
 		<div class="score">
 			<ul>
 			 	<li class="up"><div class="arrow">></div></li>
-			 	<li class="score_number"><div><?=$question['rating'];?></div></li>
+			 	<li class="score_number"><div><?= $question['rating'];?></div></li>
 			 	<li class="down"><div class="arrow"><</div></li>
 			</ul>
 		</div>
@@ -68,7 +61,6 @@ function showComments($comments){
 			<input type="submit" class="btn" value="Отправить">
 		</form>
 	</div>
-	<hr>
 	<?php
 	}
 	?>
