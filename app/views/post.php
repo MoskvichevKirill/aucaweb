@@ -22,8 +22,8 @@ function showComments($comments){
 					}
 					?>
 				</div>
-				<a href="" class="reply-comment" id=""> Reply </a>
-
+				<?php if(UserController::getUser() !== null){ ?>
+				<a href="" class="reply-comment" id=""> Ответить </a>
 				<div class="reply-form">
 					<form action="" class="comment-form" data-id="<?=$comments[$i]['id'];?>">
 						<textarea name="comment" id="" cols="30" rows="10" class="inp-comment" required></textarea>
@@ -31,6 +31,7 @@ function showComments($comments){
 						<input type="submit" class="btn-reply" value="Отправить">
 					</form>
 				</div>
+				<?php }?>
 			</div>
 			<div class="comments">
 				<?php if(!empty($comments[$i])){showComments($comments[$i]['comments']);} ?>
