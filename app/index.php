@@ -15,6 +15,7 @@
 	$router->map('GET','/create', array('c' => 'ContentController', 'a' => 'createPostView'));
 	$router->map('GET','/options', array('c'=>'ContentController', 'a'=>'profileOptions'));
 	$router->map('GET', '/[i:id]', array('c' => 'ContentController', 'a' => 'postView'));
+	$router->map('GET', '/e404', array('c' => 'ContentController', 'a' => 'e404'));
 	// $router->map('GET','/logout', array('c'=>'UserController', 'a' => 'logout')); //need to fix
 	$router->map('POST','/login', array('c' => 'UserController', 'a' => 'login'));
 	$router->map('POST','/register', array('c' => 'UserController', 'a' => 'register'));
@@ -44,7 +45,6 @@
 			}
 		}
 	} else {
-		$controller = "ContentController";
-		$action = "e404";
+		ContentController::layout('e404', $match['params']);
 	}
 ?>

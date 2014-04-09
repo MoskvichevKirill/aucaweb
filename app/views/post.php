@@ -42,13 +42,13 @@ function showComments($comments){
 		<div class="score">
 			<ul>
 			 	<li class="up"><div class="arrow">></div></li>
-			 	<li class="score_number"><div><?= $question['rating'];?></div></li>
+			 	<li class="score_number"><div><?=$question['rating'];?></div></li>
 			 	<li class="down"><div class="arrow"><</div></li>
 			</ul>
 		</div>
 		<div class="question_content">
 			<div class="question_title"><a href="#question"><?= $question['title'];?></a></div>
-			<div class="question_desc_full"><?= $question['content'];?></div>
+			<div class="question_desc_full"><?=$question['content'];?></div>
 		</div>
 	</div>
 	<?php

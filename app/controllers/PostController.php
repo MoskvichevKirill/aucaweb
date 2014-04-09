@@ -44,11 +44,10 @@
 
 		}
 
-		function ratePost(){
-
+		function ratePost($post_id, $value){
 		}
 
-		function getPosts($page = 4){
+		function getPosts($page = 1){
 			$result = GetPosts($page);
 			// $result = GetComments($page);
 			if($result['type']){
@@ -66,10 +65,11 @@
 					$post['comments'] = $result;
 					return $post;
 				} else {
-
+					$post['comments'] = [];
+					return $post;
 				}
 			} else {
-
+				 header( 'Location: http://localhost:8080/aucaweb/app/e404' );
 			}
 		}
 	}
