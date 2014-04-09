@@ -14,9 +14,12 @@
 	$router->map('GET','/search/', array('c' => 'ContentController', 'a' => 'searchView'));
 	$router->map('GET','/create', array('c' => 'ContentController', 'a' => 'createPostView'));
 	$router->map('GET','/options', array('c'=>'ContentController', 'a'=>'profileOptions'));
+	$router->map('GET','/password', array('c'=>'ContentController', 'a'=>'changePassword'));
+	$router->map('GET','/email', array('c'=>'ContentController', 'a'=>'changeEmail'));
 	$router->map('GET', '/[i:id]', array('c' => 'ContentController', 'a' => 'postView'));
 	$router->map('GET', '/e404', array('c' => 'ContentController', 'a' => 'e404'));
 	// $router->map('GET','/logout', array('c'=>'UserController', 'a' => 'logout')); //need to fix
+	//$router->map('GET','/logout', array('c'=>'UserController', 'a' => 'logout')); //need to fix
 	$router->map('POST','/login', array('c' => 'UserController', 'a' => 'login'));
 	$router->map('POST','/register', array('c' => 'UserController', 'a' => 'register'));
 	$router->map('POST', '/logout', array('c' => 'UserController', 'a' => 'logout'));

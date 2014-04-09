@@ -7,7 +7,8 @@ $(function(){
 		, usermenu = $('.usermenu')
 		, options = $('.options')
 		, comment_form = $('.comment-form')
-		, popupactive = false;
+		, popupactive = false
+		, activereply;
 
 	var closePopup = function(){
 		popup.fadeOut("slow", function(){
@@ -214,13 +215,33 @@ $(function(){
 	options.on('click', function(){
 		window.location = "/aucaweb/app/options";
 	});
-	console.log(comment_form);
 	comment_form.on('submit', function(event){
 		event.preventDefault();
 		var comment = $(this).find('.inp-comment').val();
 		var id_post = $(this).find('input[name="id_post"]').val();
 		createPost("", comment, "", id_post);
 	});
+
+
+	$('.reply-comment').on('click', function(e){
+      e.preventDefault();
+      if(activereply !== undefined){
+      	console.log(activereply);
+      	console.log($(this).next('.reply-form'));
+      	if(activereply[0] == $(this).next('.reply-form')[0]){
+      		$(this).next('.reply-form').hide();
+      		activereply = undefined;
+      		console.log("the same")
+      	} else {
+      		activereply.hide();
+      		activereply = $(this).next('.reply-form');
+      		$(this).next('.reply-form').show();
+      	}
+      } else {
+      	activereply = $(this).next('.reply-form');
+      	$(this).next('.reply-form').show();
+      }
+  });
 
 	//End of file
 });
