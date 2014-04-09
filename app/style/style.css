@@ -662,3 +662,7 @@ a:link{text-decoration: none;}
 .btn-reply:hover{
 	background-position: 0 0;
 }
+
+.reply-form{
+	display:none;
+}
