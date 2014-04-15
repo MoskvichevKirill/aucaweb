@@ -243,5 +243,30 @@ $(function(){
       }
   });
 
+  var ratePost = function(id, num){
+  	console.log(id, num);
+  	$.ajax({
+  		url: "/aucaweb/app/rate",
+  		method: "POST",
+  		data :{
+  			"CSRF" : CSRF,
+  			"id_post" : id,
+				"inc" : num
+  		},
+  		success: function(data){
+  			console.log(data);
+  		}
+  	});
+  }
+
+	$('.up').on('click', function(event){
+		var id = $(this).parent().parent().data('id');
+
+		ratePost(id, 1);
+	});
+	$('.down').on('click', function(event){
+		var id = $(this).parent().parent().data('id');
+		ratePost(id, -1);
+	});
 	//End of file
 });

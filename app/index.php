@@ -24,6 +24,7 @@
 	$router->map('POST','/register', array('c' => 'UserController', 'a' => 'register'));
 	$router->map('POST', '/logout', array('c' => 'UserController', 'a' => 'logout'));
 	$router->map('POST', '/post', array('c' => 'PostController', 'a' => 'addPost'));
+	$router->map('POST', '/rate', array('c' => 'PostController', 'a' => 'ratePost'));
 	$match = $router->match();
 	if($match){
 		$controller = $match['target']['c'];
@@ -41,10 +42,8 @@
 				return header("HTTP/1.0 404 Not Found");
 			}
 		} else if($controller === "PostController"){
-			if($action === "addPost"){
-				if(CSRFcheck()){
-					$controller::$action();
-				}
+			if(CSRFcheck()){
+				$controller::$action();
 			}
 		}
 	} else {

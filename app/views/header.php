@@ -17,7 +17,7 @@
 			<li><span class="signup"><a href="http://localhost/aucaweb/app/register">Регистрация</a></span></li>
 			<li><span class="login">Войти</span></li>
 			<?php } else { $name = UserController::getUser()['username']; ?>
-			<li><button class="postbtn"><a href="http://localhost/aucaweb/app/create"><span><span class="plus"><img src="assets/plus.png" alt="plus"></span>Задать вопрос</span></a></button></li>
+			<li><button class="postbtn"><a href="/aucaweb/app/create"><span><span class="plus"><img src="assets/plus.png" alt="plus"></span>Задать вопрос</span></a></button></li>
 			<li><?php echo $name; ?></li>
 			<li>
 				<div class="optbtn" title="Меню">

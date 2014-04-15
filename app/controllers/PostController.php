@@ -44,8 +44,6 @@
 
 		}
 
-		function ratePost($post_id, $value){
-		}
 
 		function getPosts($page = 1){
 			$result = GetPosts($page);
@@ -71,6 +69,17 @@
 			} else {
 				 header( 'Location: http://localhost:8080/aucaweb/app/e404' );
 			}
+		}
+		function ratePost(){
+			$id_post = $_POST['id_post'];
+			$inc = $_POST['inc'];
+			$rate = RatePost($id_post, $inc);
+			if($rate['type']){
+				$response = array("success" => true, "message" => "Post was rated" ,"data" => NULL);
+			}else {
+				$response = array("success" => false, "message" => "Post was not rated" ,"data" => NULL);
+			}
+			echo json_encode($response);
 		}
 	}
 

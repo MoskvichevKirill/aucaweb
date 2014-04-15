@@ -8,7 +8,7 @@ function showComments($comments){
 		?>
 			<div class="comment" data-id="<?= $comments[$i]['id']?>">
 				<div class="comment-info">
-					<div class="comment-rating"><?= $comments[$i]['rating']?></div>
+					<div class="comment-rating rate"><?= $comments[$i]['rating']?></div>
 					<div class="like up"><div class="arrow">></div></div><div class="dislike down"><div class="arrow"><</div></div>
 					<div class="comment-author"><?= $comments[$i]['username']?></div>
 					<div class="date"><?= $comments[$i]['datetime']?></div>
@@ -42,10 +42,10 @@ function showComments($comments){
 ?>
 <div class="single_post">
 	<div class="question" data-id="<?=$question['id'];?>">
-		<div class="score">
+		<div class="score" data-id="<?=$question['id'];?>">
 			<ul>
 			 	<li class="up"><div class="arrow">></div></li>
-			 	<li class="score_number"><div><?=$question['rating'];?></div></li>
+			 	<li class="score_number rate"><div><?=$question['rating'];?></div></li>
 			 	<li class="down"><div class="arrow"><</div></li>
 			</ul>
 		</div>

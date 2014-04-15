@@ -9,7 +9,7 @@
 			$question_rating = $questions[$i]['rating'];
 		?>
 	<div class="question" data-id="<?=$question_id;?>">
-		<div class="score">
+		<div class="score" data-id="<?=$question_id;?>">
 			<ul>
 			 	<li class="up"><div class="arrow">></div></li>
 			 	<li class="score_number"><div class="rate_num"><?= $question_rating;?></div></li>

@@ -106,5 +106,50 @@
 		}
 	}
 
-
+	function RatePost($id_post, $inc){
+		global $db;
+		// need to be fixed
+		$id_user = $_SESSION['user']['id'];
+		$q = "SELECT COUNT(*) as count, inc FROM rate WHERE id_post = '$id_post' and id_user = '$id_user'";
+		$count = $db->queryDB($q, "select");
+		$result = false;
+		$entity_inc_value = null;
+		if(intval($count[0]['count']) > 0){
+			$entity_inc_value = $count[0]['inc'];
+			if($entity_inc_value != $inc && $entity_inc_value != 0){
+				$q = "UPDATE rate
+							SET inc = '$inc'
+							WHERE id_post = '$id_post' AND id_user = '$id_user'";
+				$res = $db->queryDB($q, "update");
+			} else {
+				$res = false;
+			}
+		} else {
+			$q = "INSERT INTO rate (id_post, id_user, inc)
+						VALUES('$id_post', '$id_user', '$inc')";
+			$res = $db->queryDB($q, "insert");
+		}
+		if($res){
+			if($inc == 0 && $entity_inc_value == -1){
+				$inc = 1;
+			} else if($inc == 0 && $entity_inc_value == 1){
+				$inc = -1;
+			} else if($inc == -1 && $entity_inc_value == 1){
+				$inc = -2;
+			} else if($inc == 1 && $entity_inc_value == -1){
+				$inc = 2;
+			}
+			$q = "UPDATE post
+						SET rating = rating + '$inc'
+						WHERE id = '$id_post'";
+			$result = $db->queryDB($q, "update");
+			if($result){
+				return array('type' => true, 'data' => $result);
+			} else {
+				return array('type' => false, 'data' => $result);
+			}
+		} else {
+			return array('type' => false, 'data' => $result);
+		}
+	}
 ?>
