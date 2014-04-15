@@ -1,4 +1,3 @@
-
 <?php
 	function createPost($post){
 		global $db;
@@ -151,5 +150,17 @@
 		} else {
 			return array('type' => false, 'data' => $result);
 		}
+		
+		//the order of posts
+		function mainPosts($id){
+		global $db;
+		$query = "SELECT * FROM post WHERE id_post IS NULL ORDER BY rating, datetime DESC LIMIT 3";
+		$result = $db->queryDB($query, "select");
+		if($result){
+			return array('type' => true, 'data'=>$result);
+		} else {
+			return array('type' => false, 'data' => $result);
+		}
+					}	
 	}
 ?>
