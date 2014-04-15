@@ -14,7 +14,7 @@
 		<div class="srbar"><form action=""><input class="search" type="text" name="searchbar" id="search"><input class="srcbutton" type="submit" value="Поиск"></form></div>
 		<div class="cpanel"><ul>
 			<?php if(UserController::getUser() === NULL){?>
-			<li><span class="signup"><a href="http://localhost/aucaweb/app/register">Регистрация</a></span></li>
+			<li><span class="signup"><a href="/aucaweb/app/register">Регистрация</a></span></li>
 			<li><span class="login">Войти</span></li>
 			<?php } else { $name = UserController::getUser()['username']; ?>
 			<li><button class="postbtn"><a href="/aucaweb/app/create"><span><span class="plus"><img src="assets/plus.png" alt="plus"></span>Задать вопрос</span></a></button></li>
@@ -33,7 +33,6 @@
 					</ul>
 				</div>
 			</li>
-			<!-- <li><button><span class="logout">Выйти</span></button></li> -->
 			<?php } ?>
 		</ul></div>
 	</header>

@@ -75,9 +75,9 @@
 			$inc = $_POST['inc'];
 			$rate = RatePost($id_post, $inc);
 			if($rate['type']){
-				$response = array("success" => true, "message" => "Post was rated" ,"data" => NULL);
+				$response = array("success" => true, "message" => "Post was rated" ,"data" => $rate['data']);
 			}else {
-				$response = array("success" => false, "message" => "Post was not rated" ,"data" => NULL);
+				$response = array("success" => false, "message" => "Post was not rated" ,"data" => $rate['data']);
 			}
 			echo json_encode($response);
 		}

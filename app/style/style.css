@@ -485,6 +485,8 @@ a:link{text-decoration: none;}
 	font-weight: bold;
 	font-size: 1.3em;
 	cursor: pointer;
+	width: 12px;
+	margin-left: 33px;
 }
 .up .arrow:hover{
 	color: #2ECA17;

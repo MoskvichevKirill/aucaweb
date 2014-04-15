@@ -243,7 +243,7 @@ $(function(){
       }
   });
 
-  var ratePost = function(id, num){
+  var ratePost = function(id, num, rate){
   	console.log(id, num);
   	$.ajax({
   		url: "/aucaweb/app/rate",
@@ -254,19 +254,28 @@ $(function(){
 				"inc" : num
   		},
   		success: function(data){
+  			data = jQuery.parseJSON(data);
   			console.log(data);
+  			if(data.success){
+	  			console.log(parseInt(rate.text()) + num);
+	  			var rating  = parseInt(rate.text()) + num;
+	  			rate.text(rating);
+  			}
   		}
   	});
   }
-
+  var prev_rate =
+  {
+  	id: "",
+  	inc: ""
+  };
 	$('.up').on('click', function(event){
 		var id = $(this).parent().parent().data('id');
-
-		ratePost(id, 1);
+		ratePost(id, 1,$(this).parent().parent().find('.rate'));
 	});
 	$('.down').on('click', function(event){
 		var id = $(this).parent().parent().data('id');
-		ratePost(id, -1);
+		ratePost(id, -1, $(this).parent().parent().find('.rate'));
 	});
 	//End of file
 });

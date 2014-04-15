@@ -12,7 +12,7 @@
 		<div class="score" data-id="<?=$question_id;?>">
 			<ul>
 			 	<li class="up"><div class="arrow">></div></li>
-			 	<li class="score_number"><div class="rate_num"><?= $question_rating;?></div></li>
+			 	<li class="score_number rate"><?= $question_rating;?></li>
 			 	<li class="down"><div class="arrow"><</div></li>
 			</ul>
 		</div>

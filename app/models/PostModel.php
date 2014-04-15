@@ -69,7 +69,18 @@
 		$limit = 30 * $page;
 		$query = "SELECT * FROM post WHERE id_post IS NULL LIMIT $limit";
 		$result = $db->queryDB($query, "select");
+		$id_user = $_SESSION['user']['id'];
 		if($result){
+			$ids = '(';
+			for ($i=0; $i < count($result); $i++) {
+				if($i != 0){
+					$ids .= ',';
+				}
+				$ids .= $result[$i]['id'];
+			}
+			$ids .= ')';
+			$query = "SELECT id_post, inc FROM rate WHERE id_post IN '$ids' AND id_user = '$id_user'";
+			$rated = $db->queryDB($query, "select"); //need to be done
 			return array('type' => true, 'data' => $result);
 		} else {
 			return array('type' => false, 'data' => $result);
@@ -116,9 +127,10 @@
 		$entity_inc_value = null;
 		if(intval($count[0]['count']) > 0){
 			$entity_inc_value = $count[0]['inc'];
-			if($entity_inc_value != $inc && $entity_inc_value != 0){
+			if($entity_inc_value != $inc){
+				$incval = $entity_inc_value + $inc;
 				$q = "UPDATE rate
-							SET inc = '$inc'
+							SET inc = '$incval'
 							WHERE id_post = '$id_post' AND id_user = '$id_user'";
 				$res = $db->queryDB($q, "update");
 			} else {
@@ -130,26 +142,20 @@
 			$res = $db->queryDB($q, "insert");
 		}
 		if($res){
-			if($inc == 0 && $entity_inc_value == -1){
-				$inc = 1;
-			} else if($inc == 0 && $entity_inc_value == 1){
-				$inc = -1;
-			} else if($inc == -1 && $entity_inc_value == 1){
-				$inc = -2;
-			} else if($inc == 1 && $entity_inc_value == -1){
-				$inc = 2;
+			$inc_rate = $inc + $entity_inc_value;
+			if($inc != $entity_inc_value){
+				$q = "UPDATE post
+							SET rating = rating + '$inc'
+							WHERE id = '$id_post'";
+				$result = $db->queryDB($q, "update");
 			}
-			$q = "UPDATE post
-						SET rating = rating + '$inc'
-						WHERE id = '$id_post'";
-			$result = $db->queryDB($q, "update");
 			if($result){
-				return array('type' => true, 'data' => $result);
+				return array('type' => true, 'data' => $inc_rate);
 			} else {
-				return array('type' => false, 'data' => $result);
+				return array('type' => false, 'data' => $inc_rate);
 			}
 		} else {
-			return array('type' => false, 'data' => $result);
+			return array('type' => false, 'data' => null);
 		}
 	}
 ?>
