@@ -82,15 +82,7 @@
 			echo json_encode($response);
 		}
 		
-		function mainPosts(){
-		$result = mainPosts();
-			if($result['type']){
-			$response = array("success" => true,"data"=>$result);
-		} else {
-				$response = array("success" => false,"data"=>$result);
-			}
-			echo json_encode($response);
-		}
+	
 	}
 
 ?>
