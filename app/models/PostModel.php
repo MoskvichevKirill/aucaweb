@@ -1,4 +1,3 @@
-
 <?php
 	function createPost($post){
 		global $db;
@@ -157,5 +156,7 @@
 		} else {
 			return array('type' => false, 'data' => null);
 		}
+		
+			
 	}
 ?>
