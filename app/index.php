@@ -5,6 +5,7 @@
 	require "controllers/ContentController.php";
 	require "controllers/UserController.php";
 	require "controllers/PostController.php";
+	require "controllers/SearchController.php";
 
 	$router = new AltoRouter();
 	$router->setBasePath('/aucaweb/app');
@@ -18,13 +19,16 @@
 	$router->map('GET','/email', array('c'=>'ContentController', 'a'=>'changeEmail'));
 	$router->map('GET', '/[i:id]', array('c' => 'ContentController', 'a' => 'postView'));
 	$router->map('GET', '/e404', array('c' => 'ContentController', 'a' => 'e404'));
-	// $router->map('GET','/logout', array('c'=>'UserController', 'a' => 'logout')); //need to fix
-	//$router->map('GET','/logout', array('c'=>'UserController', 'a' => 'logout')); //need to fix
+	// $router->map('GET', '/test', array('c' => 'PostController', 'a' => 'getPosts'));
+	$router->map('GET', '/test', array('c' => 'SearchController', 'a' => 'search_perform'));
 	$router->map('POST','/login', array('c' => 'UserController', 'a' => 'login'));
 	$router->map('POST','/register', array('c' => 'UserController', 'a' => 'register'));
 	$router->map('POST', '/logout', array('c' => 'UserController', 'a' => 'logout'));
 	$router->map('POST', '/post', array('c' => 'PostController', 'a' => 'addPost'));
 	$router->map('POST', '/rate', array('c' => 'PostController', 'a' => 'ratePost'));
+
+	$router->map('GET|POST', '/search', array('c' => 'ContentController', 'a' => 'searchView'));
+
 	$match = $router->match();
 	if($match){
 		$controller = $match['target']['c'];
@@ -45,6 +49,8 @@
 			if(CSRFcheck()){
 				$controller::$action();
 			}
+		} else if($controller === "SearchController"){
+			$controller::$action();
 		}
 	} else {
 		ContentController::layout('e404', $match['params']);

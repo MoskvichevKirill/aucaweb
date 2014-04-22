@@ -41,12 +41,47 @@ function showComments($comments){
 }
 ?>
 <div class="single_post">
+	<?php
+	// echo json_encode($question);
+	?>
 	<div class="question" data-id="<?=$question['id'];?>">
 		<div class="score" data-id="<?=$question['id'];?>">
 			<ul>
-			 	<li class="up"><div class="arrow">></div></li>
-			 	<li class="score_number rate"><div><?=$question['rating'];?></div></li>
-			 	<li class="down"><div class="arrow"><</div></li>
+			 	<?php 
+				if ($question['inc'] !== null) {
+					if($question['inc'] == 1){
+						?>
+			 				<li class="up voted-up"><div class="arrow">></div></li>
+			 			<?php
+					} else {
+						?>
+						<li class="up"><div class="arrow">></div></li>
+						<?php
+					}
+				} else {
+						?>
+						<li class="up"><div class="arrow">></div></li>
+						<?php
+					}
+				?>
+			 	<li class="score_number rate"><?= $question['rating'];?></li>
+				<?php 
+				if ($question['inc'] !== null) {
+					if($question['inc'] == -1){
+						?>
+			 				<li class="down voted-down"><div class="arrow"><</div></li>
+			 			<?php
+					} else {
+						?>
+						<li class="down"><div class="arrow"><</div></li>
+						<?php
+					}
+				} else {
+						?>
+						<li class="down"><div class="arrow"><</div></li>
+						<?php
+					}
+				?>
 			</ul>
 		</div>
 		<div class="question_content">
@@ -59,7 +94,7 @@ function showComments($comments){
 	?>
 	<div>
 		<form action="" class="comment-form">
-			<textarea name="comment" id="" cols="30" rows="10" class="inp-comment" required></textarea>
+			<textarea name="comment" id="" cols="30" rows="10" class="inp-comment" placeholder="Оставьте ваш ответ или мнение тут" required></textarea>
 			<input type="text" name="id_post" value="<?=$question['id'];?>" hidden>
 			<input type="submit" class="btn" value="Отправить">
 		</form>

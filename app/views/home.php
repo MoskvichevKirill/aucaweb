@@ -7,13 +7,50 @@
 			$question_title = $questions[$i]['title'];
 			$question_desc = $questions[$i]['content'];
 			$question_rating = $questions[$i]['rating'];
+			if(isset($questions[$i]['inc'])){
+				$question_inc = $questions[$i]['inc'];
+			} else {
+				$question_inc = null;
+			}
 		?>
 	<div class="question" data-id="<?=$question_id;?>">
 		<div class="score" data-id="<?=$question_id;?>">
 			<ul>
-			 	<li class="up"><div class="arrow">></div></li>
+				<?php 
+				if ($question_inc !== null) {
+					if($question_inc == 1){
+						?>
+			 				<li class="up voted-up"><div class="arrow">></div></li>
+			 			<?php
+					} else {
+						?>
+						<li class="up"><div class="arrow">></div></li>
+						<?php
+					}
+				} else {
+						?>
+						<li class="up"><div class="arrow">></div></li>
+						<?php
+					}
+				?>
 			 	<li class="score_number rate"><?= $question_rating;?></li>
-			 	<li class="down"><div class="arrow"><</div></li>
+				<?php 
+				if ($question_inc !== null) {
+					if($question_inc == -1){
+						?>
+			 				<li class="down voted-down"><div class="arrow"><</div></li>
+			 			<?php
+					} else {
+						?>
+						<li class="down"><div class="arrow"><</div></li>
+						<?php
+					}
+				} else {
+						?>
+						<li class="down"><div class="arrow"><</div></li>
+						<?php
+					}
+				?>
 			</ul>
 		</div>
 			<div class="question_content">

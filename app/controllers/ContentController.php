@@ -50,5 +50,11 @@
 			$view = new View();
 			echo $view->render("views/change_email.php");
 		}
+		function searchView(){
+			$view = new View();
+			$terms = $_POST['terms'];
+			$posts = SearchController::search($terms);
+			echo $view->render("views/search.php", array('posts'=>$posts));
+		}
 	}
 ?>

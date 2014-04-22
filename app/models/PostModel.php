@@ -68,18 +68,28 @@
 		$limit = 30 * $page;
 		$query = "SELECT * FROM post WHERE id_post IS NULL LIMIT $limit";
 		$result = $db->queryDB($query, "select");
-		$id_user = $_SESSION['user']['id'];
 		if($result){
-			$ids = '(';
-			for ($i=0; $i < count($result); $i++) {
-				if($i != 0){
-					$ids .= ',';
+			if(UserController::getUser()){
+				$id_user = UserController::getUser()['id'];
+				$ids = '(';
+				for ($i=0; $i < count($result); $i++) {
+					if($i != 0){
+						$ids .= ',';
+					}
+					$ids .= $result[$i]['id'];
 				}
-				$ids .= $result[$i]['id'];
+				$ids .= ')';
+				$query = "SELECT id_post, inc FROM rate WHERE id_post IN $ids AND id_user = '$id_user'";
+				$rated = $db->queryDB($query, "select"); //need to be done
+				for ($i=0; $i < count($rated); $i++) {
+					$id = $rated[$i]['id_post'];
+					for ($j=0; $j < count($result); $j++) {
+						if($result[$j]['id'] == $id){
+							$result[$j]['inc'] = $rated[$i]['inc'];
+						}
+					}
+				}
 			}
-			$ids .= ')';
-			$query = "SELECT id_post, inc FROM rate WHERE id_post IN '$ids' AND id_user = '$id_user'";
-			$rated = $db->queryDB($query, "select"); //need to be done
 			return array('type' => true, 'data' => $result);
 		} else {
 			return array('type' => false, 'data' => $result);
@@ -88,7 +98,7 @@
 	function GetComments($id){
 		global $db;
 		$query = "SELECT `post`.`id`, `title`, `content`, `user`.`username`, `datetime`, `rating`
-							FROM post 
+							FROM post
 							JOIN user
 							ON `user`.`id` = `post`.`id_user`
 							WHERE id_post = '$id'
@@ -110,6 +120,19 @@
 		$query = "SELECT * FROM post WHERE id = '$id'";
 		$result = $db->queryDB($query, "select");
 		if($result){
+			if(UserController::getUser()){
+				$id_user = UserController::getUser()['id'];
+				$query = "SELECT inc FROM rate
+									WHERE id_user = '$id_user' && id_post = '$id'";
+				$res = $db->queryDB($query, "select");
+				if($res){
+					$result[0]['inc'] = $res[0]['inc'];
+				} else {
+					$result[0]['inc'] = null;
+				}
+			} else {
+				$result[0]['inc'] = null;
+			}
 			return array('type' => true, 'data' => $result);
 		} else {
 			return array('type' => false, 'data' => $result);
@@ -156,7 +179,5 @@
 		} else {
 			return array('type' => false, 'data' => null);
 		}
-		
-			
 	}
 ?>

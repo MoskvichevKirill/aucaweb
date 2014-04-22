@@ -257,9 +257,19 @@ $(function(){
   			data = jQuery.parseJSON(data);
   			console.log(data);
   			if(data.success){
-	  			console.log(parseInt(rate.text()) + num);
-	  			var rating  = parseInt(rate.text()) + num;
-	  			rate.text(rating);
+	  			console.log(parseInt(rate.find('.rate').text()) + num);
+	  			var rating  = parseInt(rate.find('.rate').text()) + num;
+	  			rate.find('.rate').text(rating);
+	  			if(data.data == 1){
+		  			rate.find('.down').removeClass("voted-down");
+						rate.find('.up').addClass("voted-up");
+	  			} else if(data.data == -1){
+	  				rate.find('.up').removeClass("voted-up");
+						rate.find('.down').addClass("voted-down");
+	  			} else {
+	  				rate.find('.down').removeClass("voted-down");
+	  				rate.find('.up').removeClass("voted-up");
+	  			}
   			}
   		}
   	});
@@ -271,11 +281,11 @@ $(function(){
   };
 	$('.up').on('click', function(event){
 		var id = $(this).parent().parent().data('id');
-		ratePost(id, 1,$(this).parent().parent().find('.rate'));
+		ratePost(id, 1,$(this).parent().parent());
 	});
 	$('.down').on('click', function(event){
 		var id = $(this).parent().parent().data('id');
-		ratePost(id, -1, $(this).parent().parent().find('.rate'));
+		ratePost(id, -1, $(this).parent().parent());
 	});
 	//End of file
 });

@@ -11,7 +11,7 @@
 <body>
 	<header>
 		<div class="logo"><a href="/aucaweb/app"><img src="assets/logo.png" alt="logo"></a></div>
-		<div class="srbar"><form action=""><input class="search" type="text" name="searchbar" id="search"><input class="srcbutton" type="submit" value="Поиск"></form></div>
+		<div class="srbar"><form action="/aucaweb/app/search" method="POST"><input class="search" type="text" name="terms" id="search"><input class="srcbutton" type="submit" value="Поиск"></form></div>
 		<div class="cpanel"><ul>
 			<?php if(UserController::getUser() === NULL){?>
 			<li><span class="signup"><a href="/aucaweb/app/register">Регистрация</a></span></li>

@@ -49,10 +49,10 @@
 			$result = GetPosts($page);
 			// $result = GetComments($page);
 			if($result['type']){
-				$response = array("success" => true, "message" => "Got 30 posts!" ,"data" => $result['data']);
+				// $response = array("success" => true, "message" => "Got 30 posts!" ,"data" => $result['data']);
 				return $result;
 			} else {
-				$response = array("success" => true, "message" => "Something is wrong" ,"data" => NULL);
+				// $response = array("success" => true, "message" => "Something is wrong" ,"data" => NULL);
 			}
 		}
 		function getPost($id){

@@ -491,7 +491,13 @@ a:link{text-decoration: none;}
 .up .arrow:hover{
 	color: #2ECA17;
 }
+.voted-up > .arrow{
+	color: #2ECA17;
+}
 .down .arrow:hover{
+	color: #FF0000;
+}
+.voted-down > .arrow{
 	color: #FF0000;
 }
 
