@@ -506,6 +506,11 @@ a:link{text-decoration: none;}
 	max-height: 73px ;
 	vertical-align: top;
 }
+.question_content_full{
+	display: inline-block;
+	width: 80%;
+	vertical-align: top;
+}
 .question_content{
 	overflow: hidden;
 	max-height: 73px;
@@ -520,7 +525,6 @@ a:link{text-decoration: none;}
 	color: #515EFD;
 }
 .question_desc{
-	font-size: 0.9em;
 	font-weight: 200;
 	padding: 0 10px 0 0;
 	overflow: hidden;
@@ -531,13 +535,7 @@ a:link{text-decoration: none;}
   height: 1.8em;
 }
 .question_desc_full{
-	font-size: 0.9em;
-	font-weight: 200;
 	padding: 0 10px 0 0;
-	text-align: justify;
-  text-overflow: ellipsis;
-  line-height: 0.9em;
-  height: 1.8em;
 }
 .e404{
 	padding-top: 20%;

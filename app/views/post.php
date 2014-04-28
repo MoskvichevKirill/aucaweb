@@ -84,7 +84,7 @@ function showComments($comments){
 				?>
 			</ul>
 		</div>
-		<div class="question_content">
+		<div class="question_content_full">
 			<div class="question_title"><a href="#question"><?= $question['title'];?></a></div>
 			<div class="question_desc_full"><?=$question['content'];?></div>
 		</div>
