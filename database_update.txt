@@ -137,3 +137,9 @@ ALTER TABLE `post`
 ALTER TABLE `rate`
   ADD CONSTRAINT `rate_ibfk_1` FOREIGN KEY (`id_post`) REFERENCES `post` (`id`),
   ADD CONSTRAINT `rate_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
+
+
+
+/// NEW user permission
+ALTER TABLE  `user` ADD  `permission` INT NOT NULL DEFAULT  '0' AFTER  `auth_key` ;
+ALTER TABLE  `post` CHANGE  `status`  `status` INT NOT NULL DEFAULT  '0';

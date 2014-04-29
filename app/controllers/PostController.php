@@ -3,11 +3,12 @@
 	class PostController{
 
 		function addPost(){
-			if(!empty($_SESSION['user'])){
+			if(UserController::getUser() != null){
 				$post = array();
-				$post['id_user'] = $_SESSION['user']['id'];
-				$post['title'] = $_POST['title'];
-				$post['content'] = $_POST['content'];
+				$post['id_user'] = UserController::getUser()['id'];
+				$post['title'] = strip_tags(stripslashes(mysql_real_escape_string($_POST['title'])));
+				$post['content'] = strip_tags(stripslashes(mysql_real_escape_string($_POST['content'])));
+				$post['tags'] = strip_tags(stripslashes(mysql_real_escape_string($post['tags'])));
 				$post['tags'] = explode(',', $_POST['tags']); // Need to sql escape and parse to array
 				$post['datetime'] = time();
 				$post['rating'] = 0;
@@ -35,15 +36,6 @@
 			}
 			echo json_encode($response);
 		}
-
-		function updatePost(){
-
-		}
-
-		function commentPost(){
-
-		}
-
 
 		function getPosts($page = 1){
 			$result = GetPosts($page);
@@ -81,8 +73,44 @@
 			}
 			echo json_encode($response);
 		}
-		
-	
+		function setAnswer(){
+			$id_post = $_POST['id_post'];
+			$id_ans = $_POST['id_ans'];
+			$result = SetAnswers($id_post, $id_ans);
+			if($result['type']){
+				$response = array("success" => true, "message" => "Ответ получен!" ,"data" => null);
+			} else {
+				$response = array("success" => false, "message" => "Ошибка!" ,"data" => null);
+			}
+			echo json_encode($response);
+		}
+		function smartDate($date){
+			$minute = 60;
+			$hour = 60 * $minute;
+			$day = $hour * 24;
+			$week = $day * 7;
+			$year = $day * 365;
+			$timestp = strtotime($date);
+			$now = time();
+			$left = $now - $timestp;
+			if($left >= $year){
+				echo round($left / $year).' л. ';
+				$left -= round($left / $year) * $year;
+			} else if ($left >= $week){
+				echo round($left / $week).' н. ';
+				$left -= round($left / $week) * $week;
+			} else if($left >= $day){
+				echo round($left / $day).' д. ';
+				$left -= round($left / $day) * $day;
+			} else if($left >= $hour) {
+				echo round($left / $hour).' ч. ';
+				$left -= round($left / $hour) * $hour;
+		  } else {
+				echo round($left / $minute).' м. ';
+				$left = 0;
+			}
+			echo "назад";
+		}
 	}
 
 ?>

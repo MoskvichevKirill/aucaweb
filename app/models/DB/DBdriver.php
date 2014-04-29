@@ -26,6 +26,7 @@
 
 		public function queryDB($query, $type){
 			$result = $this->_mysqli->query($query);
+			//NEED TO ADD PREPARE STATEMENTS TO AVOID SQL INJECTIONS
 			if($result && ($type == "select")){
 				$response = array();
 				while($row = $result->fetch_assoc()){

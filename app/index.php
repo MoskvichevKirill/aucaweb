@@ -26,6 +26,7 @@
 	$router->map('POST', '/logout', array('c' => 'UserController', 'a' => 'logout'));
 	$router->map('POST', '/post', array('c' => 'PostController', 'a' => 'addPost'));
 	$router->map('POST', '/rate', array('c' => 'PostController', 'a' => 'ratePost'));
+	$router->map('POST', '/answer', array('c' => 'PostController', 'a' => 'setAnswer'));
 
 	$router->map('GET|POST', '/search', array('c' => 'ContentController', 'a' => 'searchView'));
 

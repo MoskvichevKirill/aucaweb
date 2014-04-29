@@ -3,19 +3,54 @@ if($post['type']){
 	$question = $post['data'][0];
 }
 $comments = $post['comments'];
-function showComments($comments){
+function showComments($comments, $level, $question){
 	for ($i=0; $i < count($comments); $i++) {
+		if ($comments[$i]['status'] == 1) {
 		?>
+			<div class="comment answer" data-id="<?= $comments[$i]['id']?>">
+				<?php
+		} else {
+			?>
 			<div class="comment" data-id="<?= $comments[$i]['id']?>">
+			<?php
+		}
+				?>
 				<div class="comment-info">
 					<div class="comment-rating rate"><?= $comments[$i]['rating']?></div>
-					<div class="like up"><div class="arrow">></div></div><div class="dislike down"><div class="arrow"><</div></div>
+					<?php
+					if(UserController::isAuthor($comments[$i]['id_user'])){
+						$vote = 'auth';
+					} else {
+						$vote = 'up';
+					}
+					?>
+					<div class="<?=$vote?> like"><div class="arrow">></div></div>
+					<?php
+					if(UserController::isAuthor($comments[$i]['id_user'])){
+						$vote = 'auth';
+					} else {
+						$vote = 'down';
+					}
+					?>
+					<div class="dislike <?=$vote?>"><div class="arrow"><</div></div>
 					<div class="comment-author"><?= $comments[$i]['username']?></div>
-					<div class="date"><?= $comments[$i]['datetime']?></div>
+					<div class="date"><?= PostController::smartDate($comments[$i]['datetime'])?></div>
+					<?php 
+					if ($comments[$i]['status'] == 1) {
+					?>
+						<img class="answer_check" src="assets/green_check.png" alt="ответ">
+					<?php
+					}
+					if ($level == 1 && UserController::isAuthor($question['id_user']) && !UserController::isAuthor($comments[$i]['id_user']) && $question['status'] == 0) {
+					?>
+					<div class="ans">Пометить как ответ</div>
+					<?php 
+					}
+					?>
 				</div>
 				<div class="comment-content">
 					<?php
-					if(!empty($comments[$i])){ 
+					if(!empty($comments[$i])){
 						if($comments[$i]['content']){
 							echo $comments[$i]['content'];
 						}
@@ -30,55 +65,63 @@ function showComments($comments){
 						<input type="text" name="id_post" value="<?=$comments[$i]['id'];?>" hidden>
 						<input type="submit" class="btn-reply" value="Отправить">
 					</form>
+					<form action=""></form>
 				</div>
 				<?php }?>
 			</div>
 			<div class="comments">
-				<?php if(!empty($comments[$i])){showComments($comments[$i]['comments']);} ?>
+				<?php if(!empty($comments[$i])){showComments($comments[$i]['comments'], $level+1, $question);} ?>
 			</div>
 		<?php
 	}
 }
 ?>
 <div class="single_post">
-	<?php
-	// echo json_encode($question);
-	?>
 	<div class="question" data-id="<?=$question['id'];?>">
 		<div class="score" data-id="<?=$question['id'];?>">
 			<ul>
 			 	<?php 
+			 	if(UserController::isAuthor($question['id_user'])){
+					$vote = 'auth';
+				} else {
+					$vote = 'up';
+				}
 				if ($question['inc'] !== null) {
 					if($question['inc'] == 1){
 						?>
-			 				<li class="up voted-up"><div class="arrow">></div></li>
+			 				<li class="<?=$vote?> voted-up"><div class="arrow">></div></li>
 			 			<?php
 					} else {
 						?>
-						<li class="up"><div class="arrow">></div></li>
+						<li class="<?=$vote?>"><div class="arrow">></div></li>
 						<?php
 					}
 				} else {
 						?>
-						<li class="up"><div class="arrow">></div></li>
+						<li class="<?=$vote?>"><div class="arrow">></div></li>
 						<?php
 					}
 				?>
 			 	<li class="score_number rate"><?= $question['rating'];?></li>
 				<?php 
+				if(UserController::isAuthor($question['id_user'])){
+					$vote = 'auth';
+				} else {
+					$vote = 'down';
+				}
 				if ($question['inc'] !== null) {
 					if($question['inc'] == -1){
 						?>
-			 				<li class="down voted-down"><div class="arrow"><</div></li>
+			 				<li class="<?=$vote?><?=$vote?> voted-down"><div class="arrow"><</div></li>
 			 			<?php
 					} else {
 						?>
-						<li class="down"><div class="arrow"><</div></li>
+						<li class="<?=$vote?><?=$vote?>"><div class="arrow"><</div></li>
 						<?php
 					}
 				} else {
 						?>
-						<li class="down"><div class="arrow"><</div></li>
+						<li class="<?=$vote?><?=$vote?>"><div class="arrow"><</div></li>
 						<?php
 					}
 				?>
@@ -103,6 +146,6 @@ function showComments($comments){
 	}
 	?>
 	<div class="comments">
-			<?php showComments($comments);?>
+			<?php showComments($comments, 1, $question);?>
 	</div>
 </div>

@@ -4,7 +4,7 @@
 	 */
 	function UserLogin($email, $password){
 		global $db;
-		$query = "SELECT id, username, email FROM user WHERE email='$email' and password='$password'";
+		$query = "SELECT id, username, email, permission FROM user WHERE email='$email' and password='$password'";
 		$result = $db->queryDB($query, "select");
 		if($result) {
 			return array('type' => true, 'data' => $result[0]);

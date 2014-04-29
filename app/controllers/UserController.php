@@ -34,7 +34,28 @@
 				return NULL;
 			}
 		}
-
+		function isAuthor($id){
+			if(isset($_SESSION['user'])){
+				if ($_SESSION['user']['id'] == $id) {
+					return true;
+				}
+			} else {
+				return false;
+			}
+		}
+		function permission(){
+			if(isset($_SESSION['user'])){
+				if ($_SESSION['user']['permission'] == 0) {
+					return "user";
+				} else if($_SESSION['user']['permission'] == 1){
+					return "moderator";
+				} else  if($_SESSION['user']['permission'] == 2){
+					return "admin";
+				}
+			} else {
+				return "unauthorized";
+			}
+		}
 		function register(){
 			if(isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password'])){
 				$email = $_POST['email'];

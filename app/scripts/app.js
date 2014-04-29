@@ -287,5 +287,27 @@ $(function(){
 		var id = $(this).parent().parent().data('id');
 		ratePost(id, -1, $(this).parent().parent());
 	});
+	$('.auth').on('click', function(event){
+		alert("Изменять рейтинг своим вопросам и ответам нельзя. :P");
+	});
+	$('.ans').on('click', function(event){
+		var id_ans = $(this).parent().parent().data('id');
+		var id_post = $('.question').data('id');
+		console.log(id_ans);
+		console.log(id_post);
+		$.ajax({
+			url: "/aucaweb/app/answer",
+			method: "POST",
+			data: {
+				"CSRF" : CSRF,
+				"id_post": id_post,
+				"id_ans": id_ans
+			},
+			success: function(data){
+				console.log(data);
+				location.reload();
+			}
+		});
+	});
 	//End of file
 });

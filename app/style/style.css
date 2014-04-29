@@ -12,13 +12,16 @@ ul{
 }
 html,body{
 	margin: 0;
-	font-family: 'Actor', sans-serif;
+	font-family: sans-serif;
 	background-image: url("../assets/geometry.png");
 	height: 100%;
 	overflow: hidden;
 }
 ul{
 	list-style: none;
+}
+html, body{
+	min-width: 1024px;
 }
 header{
 	background-color: #63A7FA;
@@ -506,6 +509,10 @@ a:link{text-decoration: none;}
 	max-height: 73px ;
 	vertical-align: top;
 }
+.question_date{
+	float: right;
+	font-size: 0.5em;
+}
 .question_content_full{
 	display: inline-block;
 	width: 80%;
@@ -623,6 +630,9 @@ a:link{text-decoration: none;}
 .comment-form{
 	padding: 0 10% 0 10%;
 }
+.comment-form textarea{
+    resize: none;
+}
 .inp-comment{
 	transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease;
@@ -674,4 +684,16 @@ a:link{text-decoration: none;}
 }
 .reply-comment{
 	display: block;
+}
+.ans{
+	margin-left: 20px;
+	color: blue;
+	cursor: pointer;
+}
+.answer{
+	/*background-color: #D5D6CF;*/
+}
+.answer_check{
+	width: 20px;
+	margin-left: 50px;
 }

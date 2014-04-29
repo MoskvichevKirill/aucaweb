@@ -65,8 +65,8 @@
 	}
 	function GetPosts($page){
 		global $db;
-		$limit = 30 * $page;
-		$query = "SELECT * FROM post WHERE id_post IS NULL LIMIT $limit";
+		// $limit = 30 * $page;
+		$query = "SELECT * FROM post WHERE id_post IS NULL ORDER BY rating, datetime DESC ";
 		$result = $db->queryDB($query, "select");
 		if($result){
 			if(UserController::getUser()){
@@ -97,12 +97,13 @@
 	}
 	function GetComments($id){
 		global $db;
-		$query = "SELECT `post`.`id`, `title`, `content`, `user`.`username`, `datetime`, `rating`
+		$query = "SELECT `post`.`id`, `title`, `content`, `user`.`username`, `datetime`, `rating`, `id_user`, `status`
 							FROM post
 							JOIN user
 							ON `user`.`id` = `post`.`id_user`
 							WHERE id_post = '$id'
-							ORDER BY datetime DESC";
+							ORDER BY rating DESC, datetime DESC";
+							// ORDER BY datetime DESC
 		$result = $db->queryDB($query, "select");
 		if($result){
 			for ($i=0; $i < count($result); $i++) {
@@ -175,6 +176,27 @@
 				return array('type' => true, 'data' => $inc_rate);
 			} else {
 				return array('type' => false, 'data' => $inc_rate);
+			}
+		} else {
+			return array('type' => false, 'data' => null);
+		}
+	}
+	function SetAnswers($id_post, $id_ans){
+		global $db;
+		$q = "UPDATE post
+					SET status = '1'
+					WHERE id = '$id_post'";
+		$result = $db->queryDB($q, "update");
+		echo $result;
+		if ($result) {
+			$q = "UPDATE post
+						SET status = 1
+						WHERE id = '$id_ans'";
+			$result = $db->queryDB($q, "update");
+			if ($result) {
+				return array('type' => true, 'data' => null);
+			} else {
+				return array('type' => false, 'data' => null);
 			}
 		} else {
 			return array('type' => false, 'data' => null);
