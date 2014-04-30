@@ -1,10 +1,4 @@
 <?php
-<<<<<<< HEAD
-	include "header.php";
-	include "content.php";
-	include "footer.php";
-	include "widgets.php";
-=======
 	require 'lib/AltoRouter.php';
 	require "lib/csrf.php";
 	require "models/dbinit.php";
@@ -63,5 +57,4 @@
 	} else {
 		ContentController::layout('e404', $match['params']);
 	}
->>>>>>> 356f57e277d0e773cd8a1aee2d6133a4e50ea15c
 ?>
