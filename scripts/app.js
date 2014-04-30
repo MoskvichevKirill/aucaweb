@@ -185,10 +185,10 @@ $(function(){
 		var question = $('input[name="question"]').val()
 		, description = tinyMCE.activeEditor.getContent({format : 'raw'})//$('textarea[name="description"]').val()
 		, tags = $('input[name="tags"]').val();
-		console.log(tinyMCE.activeEditor.getContent({format : 'raw'}));
-		console.log($('#content').tinymce().activeEditor.getContent({format : 'text'}));
+		// console.log(tinyMCE.activeEditor.getContent({format : 'raw'}));
+		// console.log($('#content').tinymce().activeEditor.getContent({format : 'text'}));
 		id_post = null;
-		// createPost(question, description, tags, id_post)
+		createPost(question, description, tags, id_post)
 	});
 
 	function createPost(question, description, tags, id_post){
