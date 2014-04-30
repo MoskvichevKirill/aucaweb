@@ -60,7 +60,7 @@ function showComments($comments, $level, $question){
 				<?php if(UserController::getUser() !== null){ ?>
 				<a href="" class="reply-comment" id=""> Ответить </a>
 				<div class="reply-form">
-					<form action="" class="comment-form" data-id="<?=$comments[$i]['id'];?>">
+					<form action="" class="comment-form" data-id="<?=$comments[$i]['id'];?>" novalidate>
 						<textarea name="comment" id="" cols="30" rows="10" class="inp-comment" required></textarea>
 						<input type="text" name="id_post" value="<?=$comments[$i]['id'];?>" hidden>
 						<input type="submit" class="btn-reply" value="Отправить">

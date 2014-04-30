@@ -1,7 +1,8 @@
-<?php	
+<?php
 	require 'lib/AltoRouter.php';
 	require "lib/csrf.php";
 	require "models/dbinit.php";
+	require "models/DB/config.php";
 	require "controllers/ContentController.php";
 	require "controllers/UserController.php";
 	require "controllers/PostController.php";
