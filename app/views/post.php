@@ -102,7 +102,7 @@ function showComments($comments, $level, $question){
 						<?php
 					}
 				?>
-			 	<li class="score_number rate"><?= $question['rating'];?></li>
+			 	<li class="score_number rate single_post_rate"><?= $question['rating'];?></li>
 				<?php 
 				if(UserController::isAuthor($question['id_user'])){
 					$vote = 'auth';
@@ -136,8 +136,8 @@ function showComments($comments, $level, $question){
 	if(UserController::getUser() !== null){
 	?>
 	<div>
-		<form action="" class="comment-form">
-			<textarea name="comment" id="" cols="30" rows="10" class="inp-comment" placeholder="Оставьте ваш ответ или мнение тут" required></textarea>
+		<form action="" class="comment-form" novalidate>
+			<textarea name="comment" id="comment" cols="30" rows="10" class="inp-comment" placeholder="Оставьте ваш ответ или мнение тут" required></textarea>
 			<input type="text" name="id_post" value="<?=$question['id'];?>" hidden>
 			<input type="submit" class="btn" value="Отправить">
 		</form>

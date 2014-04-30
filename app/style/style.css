@@ -4,6 +4,9 @@ h1, h2{
 ul{
 	margin: 5px 0 5px 0;
 }
+p{
+	margin-top: 0;
+}
 @font-face {
   font-family: 'Actor';
   font-style: normal;
@@ -696,4 +699,7 @@ a:link{text-decoration: none;}
 .answer_check{
 	width: 20px;
 	margin-left: 50px;
+}
+.single_post_rate{
+	padding-right: 5px;
 }

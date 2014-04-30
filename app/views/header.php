@@ -6,6 +6,7 @@
 	<link rel="icon" href="assets/favicon.ico">
 	<link rel="stylesheet" href="style/style.css">
 	<script src="lib/jquery-1.11.0.min.js"></script>
+	<script src="lib/tinymce.min.js"></script>
 	<script src="scripts/app.js"></script>
 </head>
 <body>

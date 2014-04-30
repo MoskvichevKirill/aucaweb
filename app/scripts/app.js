@@ -10,6 +10,12 @@ $(function(){
 		, popupactive = false
 		, activereply;
 
+	tinymce.init({
+    selector: "textarea",
+    menubar:false,
+    statusbar: false,
+    toolbar: false
+	});
 	var closePopup = function(){
 		popup.fadeOut("slow", function(){
 				popup.addClass("hidden");
@@ -177,10 +183,12 @@ $(function(){
 	create_post.on('submit ', function(event){
 		event.preventDefault();
 		var question = $('input[name="question"]').val()
-		, description = $('textarea[name="description"]').val()
+		, description = tinyMCE.activeEditor.getContent({format : 'raw'})//$('textarea[name="description"]').val()
 		, tags = $('input[name="tags"]').val();
+		console.log(tinyMCE.activeEditor.getContent({format : 'raw'}));
+		console.log($('#content').tinymce().activeEditor.getContent({format : 'text'}));
 		id_post = null;
-		createPost(question, description, tags, id_post)
+		// createPost(question, description, tags, id_post)
 	});
 
 	function createPost(question, description, tags, id_post){
@@ -195,6 +203,7 @@ $(function(){
 				"id_post" : id_post
 			},
 			success: function(data){
+				console.log(data);
 				var result = jQuery.parseJSON(data);
 				var popupmessage = result.message;
 				$('.post-flash-message > span:first').remove();
@@ -217,8 +226,9 @@ $(function(){
 	});
 	comment_form.on('submit', function(event){
 		event.preventDefault();
-		var comment = $(this).find('.inp-comment').val();
 		var id_post = $(this).find('input[name="id_post"]').val();
+		var comment = tinyMCE.activeEditor.getContent({format : 'raw'});//$(this).find('.inp-comment').val();
+		// console.log(tinyMCE.activeEditor.getContent({format : 'raw'}));
 		createPost("", comment, "", id_post);
 	});
 
