@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
@@ -143,3 +143,4 @@ ALTER TABLE `rate`
 /// NEW user permission
 ALTER TABLE  `user` ADD  `permission` INT NOT NULL DEFAULT  '0' AFTER  `auth_key` ;
 ALTER TABLE  `post` CHANGE  `status`  `status` INT NOT NULL DEFAULT  '0';
+ALTER TABLE  `post` CHANGE  `datetime`  `datetime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
