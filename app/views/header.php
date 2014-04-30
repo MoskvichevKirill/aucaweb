@@ -11,14 +11,14 @@
 </head>
 <body>
 	<header>
-		<div class="logo"><a href="/aucaweb/app"><img src="assets/logo.png" alt="logo"></a></div>
-		<div class="srbar"><form action="/aucaweb/app/search" method="POST"><input class="search" type="text" name="terms" id="search"><input class="srcbutton" type="submit" value="Поиск"></form></div>
+		<div class="logo"><span class="site_title"><?=$site_title?></span><a href="/qna"><img src="assets/logo.png" alt="logo"></a></div>
+		<div class="srbar"><form action="/qna/search" method="POST"><input class="search" type="text" name="terms" id="search"><input class="srcbutton" type="submit" value="Поиск"></form></div>
 		<div class="cpanel"><ul>
 			<?php if(UserController::getUser() === NULL){?>
-			<li><span class="signup"><a href="/aucaweb/app/register">Регистрация</a></span></li>
+			<li><span class="signup"><a href="/qna/register">Регистрация</a></span></li>
 			<li><span class="login">Войти</span></li>
 			<?php } else { $name = UserController::getUser()['username']; ?>
-			<li><button class="postbtn"><a href="/aucaweb/app/create"><span><span class="plus"><img src="assets/plus.png" alt="plus"></span>Задать вопрос</span></a></button></li>
+			<li><button class="postbtn"><a href="/qna/create"><span><span class="plus"><img src="assets/plus.png" alt="plus"></span>Задать вопрос</span></a></button></li>
 			<li><?php echo $name; ?></li>
 			<li>
 				<div class="optbtn" title="Меню">

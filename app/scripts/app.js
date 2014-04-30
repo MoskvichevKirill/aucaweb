@@ -26,7 +26,7 @@ $(function(){
 				passw = $('input[name="password"]').val();
 		console.log(email + " " + passw);
 		$.ajax({
-			url: "/aucaweb/app/login",
+			url: "/qna/login",
 			method: "POST",
 			data:{
 				"CSRF" : CSRF,
@@ -42,8 +42,8 @@ $(function(){
 					$('.widget-flash-message').append("<span class='success'>" + popupmessage + "</span>");
 					location.reload();
 				} else {
-					if (window.location != "/aucaweb/app/login"){
-						window.location = "/aucaweb/app/login";
+					if (window.location != "/qna/login"){
+						window.location = "/qna/login";
 					}
 					$('.widget-flash-message').append("<span class='err'>" + popupmessage + "</span>");
 					email = $('#email').val("");
@@ -55,7 +55,7 @@ $(function(){
 
 	var tryLogout = function(){
 		$.ajax({
-			url: "/aucaweb/app/logout",
+			url: "/qna/logout",
 			method: "POST",
 			data:{
 				"CSRF" : CSRF
@@ -63,7 +63,7 @@ $(function(){
 			success: function(data){
 				console.log('logout successful');
 				// location.header();
-				window.location = "/aucaweb/app/";
+				window.location = "/qna";
 			}
 		});
 	}
@@ -78,7 +78,7 @@ $(function(){
 			alert("Введенные пароли не идентичны");
 		} else {
 			$.ajax({
-				url: "/aucaweb/app/register",
+				url: "/qna/register",
 				method: "POST",
 				data: {
 					"CSRF" : CSRF,
@@ -92,7 +92,7 @@ $(function(){
 					alert(result.message);
 					if(result.success){
 						setInterval(function(){
-							window.location = "/aucaweb/app";
+							window.location = "/qna";
 						}, 1200);
 					}
 				}
@@ -193,7 +193,7 @@ $(function(){
 
 	function createPost(question, description, tags, id_post){
 		$.ajax({
-			url: "/aucaweb/app/post",
+			url: "/qna/post",
 			method: "POST",
 			data: {
 				"CSRF" : CSRF,
@@ -210,7 +210,7 @@ $(function(){
 				if(result.success){
 					if(id_post == null){
 						$('.post-flash-message').append("<span class='success'>" + popupmessage + "</span>");
-						window.location = "/aucaweb/app";
+						window.location = "/qna";
 					} else{
 						location.reload();
 					}
@@ -222,7 +222,7 @@ $(function(){
 	}
 
 	options.on('click', function(){
-		window.location = "/aucaweb/app/options";
+		window.location = "/qna/options";
 	});
 	comment_form.on('submit', function(event){
 		event.preventDefault();
@@ -256,7 +256,7 @@ $(function(){
   var ratePost = function(id, num, rate){
   	console.log(id, num);
   	$.ajax({
-  		url: "/aucaweb/app/rate",
+  		url: "/qna/rate",
   		method: "POST",
   		data :{
   			"CSRF" : CSRF,
@@ -306,7 +306,7 @@ $(function(){
 		console.log(id_ans);
 		console.log(id_post);
 		$.ajax({
-			url: "/aucaweb/app/answer",
+			url: "/qna/answer",
 			method: "POST",
 			data: {
 				"CSRF" : CSRF,

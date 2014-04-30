@@ -1,9 +1,9 @@
 <?php
 	require "view.php";
 	class ContentController{
-		function layout($action, $params = array()){
+		function layout($action, $params = array(), $site_title=""){
 			$layout_view = new View();
-			echo $layout_view->render("views/layout.php", array("action" => $action, 'params' => $params));
+			echo $layout_view->render("views/layout.php", array("action" => $action, 'params' => $params, 'site_title' => $site_title));
 		}
 		function loginView(){
 			$view = new View();

@@ -58,7 +58,7 @@
 					return $post;
 				}
 			} else {
-				 header( 'Location: http://localhost:8080/aucaweb/app/e404' );
+				 header( 'Location: qna/e404' );
 			}
 		}
 		function ratePost(){

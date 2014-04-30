@@ -67,7 +67,7 @@
 			</ul>
 		</div>
 			<div class="question_content">
-				<div class="question_title"><a href="/aucaweb/app/<?=$question_id?>"><?= $question_title;?></a>
+				<div class="question_title"><a href="/qna/<?=$question_id?>"><?= $question_title;?></a>
 					<?php
 						if ($question_status == 1) {
 							?>

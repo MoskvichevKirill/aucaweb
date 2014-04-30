@@ -2,14 +2,14 @@
 	require 'lib/AltoRouter.php';
 	require "lib/csrf.php";
 	require "models/dbinit.php";
-	require "models/DB/config.php";
 	require "controllers/ContentController.php";
 	require "controllers/UserController.php";
 	require "controllers/PostController.php";
 	require "controllers/SearchController.php";
+	require "models/DB/config.php";
 
 	$router = new AltoRouter();
-	$router->setBasePath('/aucaweb/app');
+	$router->setBasePath('/qna');
 	$router->map('GET','/', array('c' => 'ContentController', 'a' => 'homeView'));
 	$router->map('GET','/login', array('c' => 'ContentController', 'a' => 'loginView'));
 	$router->map('GET','/register', array('c' => 'ContentController', 'a' => 'registerView'));
@@ -37,9 +37,9 @@
 		$action = $match['target']['a'];
 		if($controller === "ContentController"){
 			if($match['params']){
-				$controller::layout($action, $match['params']);
+				$controller::layout($action, $match['params'], $site_title);
 			} else {
-				$controller::layout($action);
+				$controller::layout($action, [], $site_title);
 			}
 		} else if($controller === "UserController"){
 			if(CSRFcheck()){
