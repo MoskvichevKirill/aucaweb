@@ -10,6 +10,7 @@
 			$question_user = $questions[$i]['id_user'];
 			$question_date = $questions[$i]['datetime'];
 			$question_status = $questions[$i]['status'];
+			$question_author = $questions[$i]['author'];
 			if(isset($questions[$i]['inc'])){
 				$question_inc = $questions[$i]['inc'];
 			} else {
@@ -66,8 +67,6 @@
 				?>
 			</ul>
 		</div>
-			<div class="question_content">
-				<div class="question_title"><a href="/qna/<?=$question_id?>"><?= $question_title;?></a>
 					<?php
 						if ($question_status == 1) {
 							?>
@@ -75,7 +74,9 @@
 							<?php
 						}
 					?>
-					<span class="question_date"><?=PostController::smartDate($question_date)?></span>
+			<div class="question_content">
+				<div class="question_title"><a href="/qna/<?=$question_id?>"><?= $question_title;?></a>
+				<div class="question_info">Автор: <?=$question_author?><span class="question_date"><?=PostController::smartDate($question_date)?></span></div>
 				</div>
 				<div class="question_desc"><?= $question_desc;?></div>
 		</div>

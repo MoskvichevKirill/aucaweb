@@ -35,7 +35,7 @@ function showComments($comments, $level, $question){
 					<div class="dislike <?=$vote?>"><div class="arrow"><</div></div>
 					<div class="comment-author"><?= $comments[$i]['username']?></div>
 					<div class="date"><?= PostController::smartDate($comments[$i]['datetime'])?></div>
-					<?php 
+					<?php
 					if ($comments[$i]['status'] == 1) {
 					?>
 						<img class="answer_check" src="assets/green_check.png" alt="ответ">
@@ -44,7 +44,7 @@ function showComments($comments, $level, $question){
 					if ($level == 1 && UserController::isAuthor($question['id_user']) && !UserController::isAuthor($comments[$i]['id_user']) && $question['status'] == 0) {
 					?>
 					<div class="ans">Пометить как ответ</div>
-					<?php 
+					<?php
 					}
 					?>
 				</div>
@@ -128,7 +128,8 @@ function showComments($comments, $level, $question){
 			</ul>
 		</div>
 		<div class="question_content_full">
-			<div class="question_title"><a href="#question"><?= $question['title'];?></a></div>
+			<div class="question_title"><a href="#question"><?= $question['title'];?></a>
+				<div class="question_info">Автор: <?=$question['author']?><span class="question_date"><?=PostController::smartDate($question['datetime'])?></span></div></div>
 			<div class="question_desc_full"><?=$question['content'];?></div>
 		</div>
 	</div>

@@ -66,7 +66,7 @@
 	function GetPosts($page){
 		global $db;
 		// $limit = 30 * $page;
-		$query = "SELECT * FROM post WHERE id_post IS NULL ORDER BY rating, datetime DESC ";
+		$query = "SELECT *, `user`.`username` as author FROM post LEFT JOIN user on `post`.`id_user` = `user`.`id` WHERE id_post IS NULL ORDER BY rating DESC, datetime DESC ";
 		$result = $db->queryDB($query, "select");
 		if($result){
 			if(UserController::getUser()){
@@ -118,7 +118,11 @@
 
 	function GetPost($id){
 		global $db;
-		$query = "SELECT * FROM post WHERE id = '$id'";
+		$query = "SELECT *, `user`.`username` as author
+							FROM post
+							JOIN user on `post`.`id_user` = `user`.`id`
+							WHERE `post`.`id` = '$id'";
+
 		$result = $db->queryDB($query, "select");
 		if($result){
 			if(UserController::getUser()){

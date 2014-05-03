@@ -523,8 +523,9 @@ a:link{text-decoration: none;}
 	vertical-align: top;
 }
 .question_date{
-	float: right;
-	font-size: 0.5em;
+	/*float: right;*/
+	/*font-size: 0.5em;*/
+	margin-left: 20px;
 }
 .question_content_full{
 	display: inline-block;
@@ -538,11 +539,15 @@ a:link{text-decoration: none;}
 .question_title{
 	font-size: 1.2em;
 	font-weight: 300;
-	padding: 10px 10px 10px 0;
+	padding: 0 10px 10px 0;
 }
 .question_title a{
 	text-decoration: none;
 	color: #515EFD;
+}
+.question_info{
+	color: #858585;
+	font-size: 12px;
 }
 .question_desc{
 	font-weight: 200;
@@ -707,8 +712,9 @@ a:link{text-decoration: none;}
 	/*background-color: #D5D6CF;*/
 }
 .answer_check{
-	width: 20px;
-	margin-left: 50px;
+	float: right;
+	width: 30px;
+	margin-right: 20px;
 }
 .single_post_rate{
 	padding-right: 5px;

@@ -4,7 +4,7 @@
 	<form action=""  id="register">
 		<div>Желаемое имя для вебсайта:* </div>
 		<div class="field">
-			<input class="input" name="username" type="text" required/>
+			<input class="input" name="username" type="text" pattern="/[a-zA-Z]/" minlength="5" required/>
 		</div></br>
 		<div>Ваш email:*</div>
 		<div class="field">
